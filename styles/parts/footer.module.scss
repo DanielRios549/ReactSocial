@@ -1,0 +1,28 @@
+.footer {
+    width: 100%;
+    border-top: 1px solid var(--secondary);
+    display: flex;
+    justify-content: var(--footerAlign);
+    align-items: center;
+    flex-wrap: wrap;
+    padding: var(--footerPadding);
+    grid-area: footer;
+
+    span {
+        display: flex;
+        align-items: center;
+
+        a {
+            background-color: var(--white);
+            padding: 5px;
+            height: 2em;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
