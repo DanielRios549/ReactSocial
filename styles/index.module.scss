@@ -1,4 +1,4 @@
-@import './functions/breakpoints';
+@import './config/breakpoints';
 
 .container {
     background-color: var(--primary);
@@ -27,7 +27,7 @@
     }
 }
 
-// Tablet and Mobile Landscape
+// Tablet
 
 @media (min-width: $tablet + 1 + 'px') and (max-width: $desktop + 'px') {
     .container {
@@ -45,6 +45,19 @@
     }
 }
 
+// Mobile
+
+@media (max-width: $tablet + 'px') {
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "main"
+            "footer"
+        ;
+    }
+}
+
 // Mobile Landscape
 
 @media (min-width: $mobile + 1 + 'px') and (max-width: $tablet + 'px') {
@@ -54,12 +67,6 @@
         --padding: 0 20px;
         --menu: column;
         --toggleMenuShow: block;
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas:
-            "header header"
-            "main main"
-            "footer footer"
-        ;
     }
 }
 
@@ -72,11 +79,5 @@
         --padding: 0 60px;
         --menu: column;
         --toggleMenuShow: block;
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            "header"
-            "main"
-            "footer"
-        ;
     }
 }

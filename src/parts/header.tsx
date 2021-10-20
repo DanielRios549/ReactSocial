@@ -9,7 +9,7 @@ const Header: React.FC = () => {
         menu === false ? setMenu(true) : setMenu(false)
     }
 
-    return(
+    return (
         <header id={styles.header}>
             <img src="/vercel.svg" alt="logo" width={150} height={20} className={styles.logo}/>
             <button onClick={handleMenu} id={styles.menuToggle} />

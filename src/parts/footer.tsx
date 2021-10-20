@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
     const vercelLink = 'https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
     const githubLink = 'https://github.com/DanielRios549'
 
-    return(
+    return (
         <footer className={styles.footer}>
             <span>
             Powered by
