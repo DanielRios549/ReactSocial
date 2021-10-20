@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Header from '../src/parts/header'
 import Main from '../src/parts/main'
 import Footer from '../src/parts/footer'
-import styles from '../styles/Home.module.scss'
+import styles from '../styles/index.module.scss'
 
 const Home: NextPage = () => {
     return (
