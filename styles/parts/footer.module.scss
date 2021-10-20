@@ -1,13 +1,13 @@
 .footer {
-    width: 100%;
     border-top: 2px solid var(--primary);
     background-color: var(--secondary);
     display: flex;
-    justify-content: var(--align);
+    justify-content: var(--alignFooter);
     align-items: center;
     flex-wrap: wrap;
     padding: var(--padding);
     grid-area: footer;
+    gap: 10px;
     z-index: 101;
 
     span {

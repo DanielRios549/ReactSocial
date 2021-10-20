@@ -1,21 +1,24 @@
+@import './functions/breakpoints';
+
 .container {
     background-color: var(--primary);
     min-height: 100vh;
     display: grid;
+    grid-template-rows: 80px 1fr 100px;
     height: 100vh;
     z-index: 99;
 }
 
 // Desktop
 
-@media (min-width: 901px) {
+@media (min-width: $desktop + 1 + 'px') {
     .container {
-        --align: space-between;
+        --alignHeader: flex-start;
+        --alignFooter: space-between;
         --padding: 0 100px;
         --menu: row;
         --toggleMenuShow: none;
         grid-template-columns: 200px 1fr 320px;
-        grid-template-rows: 80px 1fr 100px;
         grid-template-areas:
             "header header header"
             "main main main"
@@ -26,14 +29,32 @@
 
 // Tablet and Mobile Landscape
 
-@media (min-width: 461px) and (max-width: 900px) {
+@media (min-width: $tablet + 1 + 'px') and (max-width: $desktop + 'px') {
     .container {
-        --align: space-between;
+        --alignHeader: flex-start;
+        --alignFooter: space-between;
         --padding: 0 100px;
-        --menu: row;
-        --toggleMenuShow: none;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: 80px 1fr 100px;
+        --menu: column;
+        --toggleMenuShow: block;
+        grid-template-columns: 1fr 600px 1fr;
+        grid-template-areas:
+            "header header header"
+            ". main ."
+            "footer footer footer"
+        ;
+    }
+}
+
+// Mobile Landscape
+
+@media (min-width: $mobile + 1 + 'px') and (max-width: $tablet + 'px') {
+    .container {
+        --alignHeader: flex-start;
+        --alignFooter: space-between;
+        --padding: 0 20px;
+        --menu: column;
+        --toggleMenuShow: block;
+        grid-template-columns: 1fr 1fr;
         grid-template-areas:
             "header header"
             "main main"
@@ -42,27 +63,16 @@
     }
 }
 
-// Mobile Landscape
-
-@media (min-width: 461px) and (max-width: 730px) {
-    .container {
-        --align: space-between;
-        --padding: 0 20px;
-        --menu: column;
-        --toggleMenuShow: block;
-    }
-}
-
 // Mobile Portrait
 
-@media (max-width: 460px) {
+@media (max-width: $mobile + 'px') {
     .container {
-        --align: center;
+        --alignHeader: center;
+        --alignFooter: center;
         --padding: 0 60px;
         --menu: column;
         --toggleMenuShow: block;
         grid-template-columns: 1fr;
-        grid-template-rows: 80px 1fr 100px;
         grid-template-areas:
             "header"
             "main"
