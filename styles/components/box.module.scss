@@ -1,0 +1,21 @@
+.single {
+    padding: 10px;
+    border-radius: var(--radius);
+    background-color: var(--secondary);
+}
+.multi {
+    > * {
+        border-radius: var(--radius);
+        background-color: var(--secondary);
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+}
+.single,
+.multi {
+    color: var(--text);
+
+    img {
+        border-radius: var(--radius);
+    }
+}

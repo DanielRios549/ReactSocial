@@ -1,28 +1,35 @@
 @import './config/breakpoints';
 
-.container {
+#container {
     background-color: var(--primary);
     min-height: 100vh;
     display: grid;
+    grid-template: var(--mainGrid);
     grid-template-rows: 80px 1fr 100px;
-    height: 100vh;
+    height: 100%;
     z-index: 99;
 }
 
 // Desktop
 
 @media (min-width: $desktop + 1 + 'px') {
-    .container {
+    #container {
         --alignHeader: flex-start;
         --alignFooter: space-between;
         --padding: 0 100px;
         --menu: row;
         --toggleMenuShow: none;
-        grid-template-columns: 200px 1fr 320px;
-        grid-template-areas:
-            "header header header"
-            "main main main"
-            "footer footer footer"
+        --mainGrid:
+            "header header header" 100px
+            ". main ." 200px
+            "footer footer footer" 1fr
+            / 1fr minmax(800px, 1200px) 1fr
+        ;
+        --contentGrid: 
+            "panel wellcome aside"
+            "panel form aside"
+            "panel posts aside"
+            / minmax(150px, 250px) 580px minmax(250px, 350px)
         ;
     }
 }
@@ -30,17 +37,25 @@
 // Tablet
 
 @media (min-width: $tablet + 1 + 'px') and (max-width: $desktop + 'px') {
-    .container {
+    #container {
         --alignHeader: flex-start;
         --alignFooter: space-between;
         --padding: 0 100px;
         --menu: column;
         --toggleMenuShow: block;
-        grid-template-columns: 1fr 600px 1fr;
-        grid-template-areas:
+        --mainGrid:
             "header header header"
             ". main ."
             "footer footer footer"
+            / 1fr 800px 1fr
+        ;
+        --contentGrid: 
+            "panel"
+            "wellcome"
+            "form"
+            "posts"
+            "aside"
+            / 1fr
         ;
     }
 }
@@ -48,12 +63,12 @@
 // Mobile
 
 @media (max-width: $tablet + 'px') {
-    .container {
-        grid-template-columns: 1fr;
-        grid-template-areas:
+    #container {
+        --mainGrid:
             "header"
             "main"
             "footer"
+            / 1fr
         ;
     }
 }
@@ -61,7 +76,7 @@
 // Mobile Landscape
 
 @media (min-width: $mobile + 1 + 'px') and (max-width: $tablet + 'px') {
-    .container {
+    #container {
         --alignHeader: flex-start;
         --alignFooter: space-between;
         --padding: 0 20px;
@@ -73,7 +88,7 @@
 // Mobile Portrait
 
 @media (max-width: $mobile + 'px') {
-    .container {
+    #container {
         --alignHeader: center;
         --alignFooter: center;
         --padding: 0 60px;

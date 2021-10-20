@@ -1,9 +1,11 @@
-.main {
-    padding: 5rem 0;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+#main {
+    padding: 20px 0;
     grid-area: main;
+    display: grid;
+    gap: 10px;
+    grid-template: var(--contentGrid);
+
+    > aside {
+        align-self: start;
+    }
 }
