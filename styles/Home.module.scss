@@ -3,31 +3,18 @@
     min-height: 100vh;
     display: grid;
     height: 100vh;
+    z-index: 99;
 }
 
 // Desktop
 
 @media (min-width: 901px) {
     .container {
-        --footerAlign: space-between;
-        --footerPadding: 0 100px;
-        grid-template-columns: 1fr 200px 500px 200px 1fr;
-        grid-template-rows: 80px 1fr 100px;
-        grid-template-areas:
-            "header header header header header"
-            ". main main main ."
-            "footer footer footer footer footer"
-        ;
-    }
-}
-
-// Tablet
-
-@media (min-width: 581px) and (max-width: 900px) {
-    .container {
-        --footerAlign: space-between;
-        --footerPadding: 0 100px;
-        grid-template-columns: minmax(1fr, 200px) minmax(1fr, 500px) minmax(1fr, 200px);
+        --align: space-between;
+        --padding: 0 100px;
+        --menu: row;
+        --toggleMenuShow: none;
+        grid-template-columns: 200px 1fr 320px;
         grid-template-rows: 80px 1fr 100px;
         grid-template-areas:
             "header header header"
@@ -37,13 +24,15 @@
     }
 }
 
-// Mobile Landscape
+// Tablet and Mobile Landscape
 
-@media (min-width: 461px) and (max-width: 580px) {
+@media (min-width: 461px) and (max-width: 900px) {
     .container {
-        --footerAlign: space-between;
-        --footerPadding: 0 20px;
-        grid-template-columns: minmax(1fr, 200px) minmax(1fr, 200px);
+        --align: space-between;
+        --padding: 0 100px;
+        --menu: row;
+        --toggleMenuShow: none;
+        grid-template-columns: repeat(2, 1fr);
         grid-template-rows: 80px 1fr 100px;
         grid-template-areas:
             "header header"
@@ -53,12 +42,25 @@
     }
 }
 
+// Mobile Landscape
+
+@media (min-width: 461px) and (max-width: 730px) {
+    .container {
+        --align: space-between;
+        --padding: 0 20px;
+        --menu: column;
+        --toggleMenuShow: block;
+    }
+}
+
 // Mobile Portrait
 
 @media (max-width: 460px) {
     .container {
-        --footerAlign: center;
-        --footerPadding: 0 60px;
+        --align: center;
+        --padding: 0 60px;
+        --menu: column;
+        --toggleMenuShow: block;
         grid-template-columns: 1fr;
         grid-template-rows: 80px 1fr 100px;
         grid-template-areas:

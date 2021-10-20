@@ -1,19 +1,26 @@
 .footer {
     width: 100%;
-    border-top: 1px solid var(--secondary);
+    border-top: 2px solid var(--primary);
+    background-color: var(--secondary);
     display: flex;
-    justify-content: var(--footerAlign);
+    justify-content: var(--align);
     align-items: center;
     flex-wrap: wrap;
-    padding: var(--footerPadding);
+    padding: var(--padding);
     grid-area: footer;
+    z-index: 101;
 
     span {
         display: flex;
         align-items: center;
+        color: var(--text);
 
+        .vercel {
+            background-color: var(--text2);
+            border-radius: 5px;
+            margin-left: 10px;
+        }
         a {
-            background-color: var(--white);
             padding: 5px;
             height: 2em;
             display: flex;

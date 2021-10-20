@@ -1,0 +1,40 @@
+/*
+    @params $t1: element
+    @params $t2: duration
+    @params $t3: type
+*/
+
+@mixin transition($t1, $t2, $t3) {
+	-webkit-transition: $t1 $t2 $t3;
+	-moz-transition: $t1 $t2 $t3;
+	-ms-transition: $t1 $t2 $t3;
+	transition: $t1 $t2 $t3;
+}
+
+/*
+    @params $t1: transform value:
+
+    scale || rotate || translate3d || translateZ || translateX...
+*/
+
+@mixin transform($t1) {
+	-webkit-transform: $t1;
+	-moz-transform: $t1;
+	-ms-transform: $t1;
+	transform: $t1;
+}
+
+/*
+    @params $t1: name
+    @params $t2: duration
+    @params $t3: timing-function
+    @params $t4: iteration-count
+    @params $t5: direction
+*/
+
+@mixin animation($t1, $t2, $t3, $t4, $t5) {
+	-webkit-animation: $t1 $t2 $t3 $t4 $t5;
+	-moz-animation: $t1 $t2 $t3 $t4 $t5;
+	-ms-animation: $t1 $t2 $t3 $t4 $t5;
+	animation: $t1 $t2 $t3 $t4 $t5;
+}

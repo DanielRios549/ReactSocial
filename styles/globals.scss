@@ -9,12 +9,31 @@ body {
         color: var(--text);
         text-decoration: none;
     }
+    ul {
+        padding: 0;
+
+        li {
+            list-style: none;
+        }
+    }
+    button {
+        border: none;
+    }
+    input {
+        text-align: left;
+        padding: 10px;
+
+        &::placeholder {
+            font-size: 1.2em;
+        }
+    }
 }
 
 * {
     box-sizing: border-box;
-    --primary: #ffffff;
-    --secondary: #eaeaea;
-    --text: #181818;
-    --white: #ffffff;
+    --primary: #181818;
+    --secondary: #242526;
+    --text: #d6d6d6;
+    --text2: #eaeaea;
+    --radius: 12px;
 }
