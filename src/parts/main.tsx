@@ -1,14 +1,24 @@
 import React from 'react'
 import Box from '../components/box'
 import UserSidebar from '../components/userSidebar'
+import Relations from '../components/relations'
+import Relation from '../types/relation'
+import Post from '../types/post'
 import styles from '../../styles/parts/main.module.scss'
-
-type Posts = {
-    text?: string
-}
 
 const Main: React.FC = () => {
     const [user, setUser] = React.useState('')
+    const [posts, setPosts] = React.useState<Post[]>([])
+    
+    const [communities, setCommunities] = React.useState<Relation[]>([
+        {name: 'Alura'},
+        {name: 'Rocketseat'}
+    ])
+    
+    const [following, setFollowing] = React.useState<Relation[]>([
+        {name: 'Felipe Deschamps'},
+        {name: 'Diego Fernandes'}
+    ])
 
     React.useEffect(() => {
         fetch('/api/user').then((data) => {
@@ -20,17 +30,7 @@ const Main: React.FC = () => {
     }, [])
 
     const sidebar = ['Communities', 'Friends']
-    const sidebarItems = [
-        [  // Communities
-            {'name': 'Felipe Deschamps'},
-            {'name': 'Diego Fernandes'}
-        ],
-        [  // Friends
-            {'name': 'Alura'},
-            {'name': 'Rocketseat'}
-        ]
-    ]
-    const [posts, setPosts] = React.useState<Posts[]>([])
+    
 
     const handleForm = (event: any) => {
         event.preventDefault()
@@ -71,18 +71,10 @@ const Main: React.FC = () => {
                 ))
             }</Box>
             <Box key="aside" area="aside" tag="aside">{
-                sidebarItems.map((side, number) => (
-                    <section key={number}>
-                        <h2>{`${sidebar[number]} (${side.length})`}</h2>
-                        <ul>{
-                            side.map((item, index) => (
-                                <li key={index}>{
-                                    item.name
-                                }</li>
-                            ))
-                        }</ul>
-                    </section>
-                ))
+                <>
+                    <Relations name="Communities" items={communities}/>
+                    <Relations name="Following" items={following}/>
+                </>
             }</Box>
         </main>
     )
