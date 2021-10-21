@@ -9,7 +9,12 @@ const UserSidebar: React.FC<Props> = (props) => {
     const link = 'https://github.com'
 
     const getImage = () => {
-        return props.user !== undefined ? `${link}/${props.user}.png` : '/user.jpg'
+        if ((props.user !== undefined) && (props.user !== '')) {
+            return `${link}/${props.user}.png`
+        }
+        else {
+            return '/user.jpg'
+        }
     }
     return (
         <>

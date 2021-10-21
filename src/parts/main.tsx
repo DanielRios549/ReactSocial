@@ -8,7 +8,17 @@ type Posts = {
 }
 
 const Main: React.FC = () => {
-    const user = 'DanielRios549'
+    const [user, setUser] = React.useState('')
+
+    React.useEffect(() => {
+        fetch('/api/user').then((data) => {
+            return data.json()
+        })
+        .then((response) => {
+            setUser(response.user)
+        });
+    }, [])
+
     const sidebar = ['Communities', 'Friends']
     const sidebarItems = [
         [  // Communities
@@ -36,13 +46,13 @@ const Main: React.FC = () => {
 
     return (
         <main id={styles.main}>
-            <Box single area="panel" tag="aside">
+            <Box single key="panel" area="panel" tag="aside">
                 <UserSidebar user={user}/>
             </Box>
-            <Box single area="wellcome" tag="article">
+            <Box single key="wellcome" area="wellcome" tag="article">
                 <h1>Wellcome {user}!</h1>
             </Box>
-            <Box single area="form" tag="article">
+            <Box single key="form" area="form" tag="article">
                 <h2>Let's Start</h2>
                 <form onSubmit={handleForm}>
                     <input 
@@ -53,17 +63,17 @@ const Main: React.FC = () => {
                     />
                 </form>
             </Box>
-            <Box area="posts" tag="article">{
+            <Box key="posts" area="posts" tag="article">{
                 posts.map((post, index) => (
                     <article key={index}>{
                         post.text
                     }</article>
                 ))
             }</Box>
-            <Box area="aside" tag="aside">{
+            <Box key="aside" area="aside" tag="aside">{
                 sidebarItems.map((side, number) => (
                     <section key={number}>
-                        <h2>{sidebar[number]}</h2>
+                        <h2>{`${sidebar[number]} (${side.length})`}</h2>
                         <ul>{
                             side.map((item, index) => (
                                 <li key={index}>{
