@@ -12,7 +12,10 @@ const UserSidebar: React.FC<Props> = (props) => {
         return props.user !== undefined ? `${link}/${props.user}.png` : '/user.jpg'
     }
     return (
-        <img src={getImage()} alt="user" />
+        <>
+            <img src={getImage()} alt="user" />
+            <hr />
+        </>
     )
 }
 

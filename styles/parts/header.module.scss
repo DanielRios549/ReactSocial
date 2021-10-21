@@ -69,14 +69,14 @@
         }
     }
     #search {
-        border: none;
-        border-radius: var(--radius);
-        background-color: var(--primary);
         height: 40px;
         margin-left: auto;
+        width: 200px;
 
-        &:active {
-            border: none;
+        @include transition(width, 400ms, ease);
+
+        &:focus {
+            width: 300px;
         }
     }
 }
