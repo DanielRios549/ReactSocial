@@ -1,13 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
+import User from './types/user'
 
-type Data = {
-    name: string,
-    user: string,
-    image: string
-}
 
-const handler = (request: NextApiRequest, response: NextApiResponse<Data>) => {
+const handler = (request: NextApiRequest, response: NextApiResponse<User>) => {
     const username = 'DanielRios549'
     const url = `https://api.github.com/users/${username}`
 
@@ -21,8 +17,6 @@ const handler = (request: NextApiRequest, response: NextApiResponse<Data>) => {
             image: github.avatar_url
         })
     });
-
-    
 }
 
 export default handler

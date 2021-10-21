@@ -1,6 +1,7 @@
 import React from 'react'
 import Box from '../components/box'
 import UserSidebar from '../components/userSidebar'
+import User from '../../pages/api/types/user'
 import Relations from '../components/relations'
 import Relation from '../types/relation'
 import Post from '../types/post'
@@ -10,27 +11,17 @@ const Main: React.FC = () => {
     const [user, setUser] = React.useState('')
     const [posts, setPosts] = React.useState<Post[]>([])
     
-    const [communities, setCommunities] = React.useState<Relation[]>([
-        {name: 'Alura'},
-        {name: 'Rocketseat'}
-    ])
-    
-    const [following, setFollowing] = React.useState<Relation[]>([
-        {name: 'Felipe Deschamps'},
-        {name: 'Diego Fernandes'}
-    ])
+    const [communities, setCommunities] = React.useState<Relation[]>([])
+    const [following, setFollowing] = React.useState<Relation[]>([])
 
     React.useEffect(() => {
         fetch('/api/user').then((data) => {
             return data.json()
         })
-        .then((response) => {
+        .then((response: User) => {
             setUser(response.user)
         });
     }, [])
-
-    const sidebar = ['Communities', 'Friends']
-    
 
     const handleForm = (event: any) => {
         event.preventDefault()
@@ -72,8 +63,8 @@ const Main: React.FC = () => {
             }</Box>
             <Box key="aside" area="aside" tag="aside">{
                 <>
-                    <Relations name="Communities" items={communities}/>
-                    <Relations name="Following" items={following}/>
+                    <Relations key="Communities" name="Communities" items={communities}/>
+                    <Relations key="Following" name="Following" items={following}/>
                 </>
             }</Box>
         </main>

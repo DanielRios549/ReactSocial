@@ -9,7 +9,7 @@ type Props = {
 
 const Relations: React.FC<Props> = (props) => {
     return (
-        <section>{console.log(props.items)}
+        <section>
             <h2>{`${props.name} (${props.items.length})`}</h2>
             <ul>{
                 props.items.map((item, index) => (
@@ -22,4 +22,4 @@ const Relations: React.FC<Props> = (props) => {
     );
 }
 
-export default Relations;
+export default Relations
