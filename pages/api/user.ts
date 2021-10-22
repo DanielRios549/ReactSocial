@@ -7,10 +7,9 @@ const handler = (request: NextApiRequest, response: NextApiResponse<User>) => {
     const username = 'DanielRios549'
     const url = `https://api.github.com/users/${username}`
 
-    fetch(url).then((data) => {
-        return data.json()
-    })
-    .then((github) => {
+    fetch(url).then(async (data) => {
+        const github = await data.json()
+
         response.status(200).json({
             name: github.name,
             user: github.login,

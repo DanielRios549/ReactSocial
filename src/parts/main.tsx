@@ -7,21 +7,11 @@ import Relation from '../types/relation'
 import Post from '../types/post'
 import styles from '../../styles/parts/main.module.scss'
 
-const Main: React.FC = () => {
-    const [user, setUser] = React.useState('')
+const Main: React.FC<User> = (props) => {
     const [posts, setPosts] = React.useState<Post[]>([])
     
     const [communities, setCommunities] = React.useState<Relation[]>([])
     const [following, setFollowing] = React.useState<Relation[]>([])
-
-    React.useEffect(() => {
-        fetch('/api/user').then((data) => {
-            return data.json()
-        })
-        .then((response: User) => {
-            setUser(response.user)
-        });
-    }, [])
 
     const handleForm = (event: any) => {
         event.preventDefault()
@@ -38,10 +28,10 @@ const Main: React.FC = () => {
     return (
         <main id={styles.main}>
             <Box single key="panel" area="panel" tag="aside">
-                <UserSidebar user={user}/>
+                <UserSidebar user={props.user}/>
             </Box>
             <Box single key="wellcome" area="wellcome" tag="article">
-                <h1>Wellcome {user}!</h1>
+                <h1>Wellcome {props.name}!</h1>
             </Box>
             <Box single key="form" area="form" tag="article">
                 <h2>Let's Start</h2>
