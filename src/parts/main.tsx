@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Box from '../components/box'
 import UserSidebar from '../components/userSidebar'
 import User from '../types/user'
@@ -8,10 +8,21 @@ import Post from '../types/post'
 import styles from '../../styles/parts/main.module.scss'
 
 const Main: React.FC<User> = (props) => {
-    const [posts, setPosts] = React.useState<Post[]>([])
+    const [posts, setPosts] = useState<Post[]>([])
     
-    const [communities, setCommunities] = React.useState<Relation[]>([])
-    const [following, setFollowing] = React.useState<Relation[]>([])
+    const [communities, setCommunities] = useState<Relation[]>([])
+    const [following, setFollowing] = useState<Relation[]>([])
+
+    useEffect(() => {
+        fetch('/api/post', {
+            method: 'POST',
+        })
+        .then(async (dato) => {
+            const response = await dato.json()
+            console.log(response.data.allPosts)
+            setPosts([...posts, ...response.data.allPosts])
+        })
+    }, [])
 
     const handleForm = (event: any) => {
         event.preventDefault()
