@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import User from './types/user'
+import User from '../../src/types/user'
 
 
 const handler = (request: NextApiRequest, response: NextApiResponse<User>) => {
