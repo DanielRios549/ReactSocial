@@ -1,0 +1,25 @@
+// Tablet
+
+@media (min-width: $tablet + 1 + 'px') and (max-width: $desktop + 'px') {
+    :root {
+        --alignHeader: flex-start;
+        --alignFooter: space-between;
+        --padding: 0 100px;
+        --menu: column;
+        --toggleMenuShow: block;
+        --mainGrid:
+            "header header header"
+            ". main ."
+            "footer footer footer"
+            / 1fr 800px 1fr
+        ;
+        --contentGrid: 
+            "panel"
+            "wellcome"
+            "form"
+            "posts"
+            "aside"
+            / 1fr
+        ;
+    }
+}

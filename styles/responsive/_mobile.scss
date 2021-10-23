@@ -1,0 +1,36 @@
+// Mobile
+
+@media (max-width: $tablet + 'px') {
+    :root {
+        --mainGrid:
+            "header"
+            "main"
+            "footer"
+            / 1fr
+        ;
+    }
+}
+
+// Mobile Landscape
+
+@media (min-width: $mobile + 1 + 'px') and (max-width: $tablet + 'px') {
+    :root {
+        --alignHeader: flex-start;
+        --alignFooter: space-between;
+        --padding: 0 20px;
+        --menu: column;
+        --toggleMenuShow: block;
+    }
+}
+
+// Mobile Portrait
+
+@media (max-width: $mobile + 'px') {
+    :root {
+        --alignHeader: center;
+        --alignFooter: center;
+        --padding: 0 60px;
+        --menu: column;
+        --toggleMenuShow: block;
+    }
+}

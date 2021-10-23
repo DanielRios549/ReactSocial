@@ -1,0 +1,23 @@
+// Desktop
+
+@media (min-width: $desktop + 1 + 'px') {
+    :root {
+        --alignHeader: flex-start;
+        --alignFooter: space-between;
+        --padding: 0 100px;
+        --menu: row;
+        --toggleMenuShow: none;
+        --mainGrid:
+            "header header header" 100px
+            ". main ." 200px
+            "footer footer footer" 1fr
+            / 1fr minmax(800px, 1200px) 1fr
+        ;
+        --contentGrid: 
+            "panel wellcome aside"
+            "panel form aside"
+            "panel posts aside"
+            / minmax(150px, 250px) 580px minmax(250px, 350px)
+        ;
+    }
+}
