@@ -19,7 +19,6 @@ const Main: React.FC<User> = (props) => {
         })
         .then(async (dato) => {
             const response = await dato.json()
-            console.log(response.data.allPosts)
             setPosts([...posts, ...response.data.allPosts])
         })
     }, [])

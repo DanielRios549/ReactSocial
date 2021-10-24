@@ -13,11 +13,16 @@
             "footer footer footer" 1fr
             / 1fr minmax(800px, 1200px) 1fr
         ;
-        --contentGrid: 
+        --homeGrid: 
             "panel wellcome aside"
             "panel form aside"
             "panel posts aside"
             / minmax(150px, 250px) 580px minmax(250px, 350px)
+        ;
+        --loginGrid: 
+            "image form" 1fr
+            "image info" 100px
+            / 1fr 300px
         ;
     }
 }

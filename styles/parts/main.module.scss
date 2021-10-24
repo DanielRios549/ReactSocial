@@ -3,7 +3,7 @@
     grid-area: main;
     display: grid;
     gap: 10px;
-    grid-template: var(--contentGrid);
+    grid-template: var(--homeGrid);
 
     > aside {
         align-self: start;
