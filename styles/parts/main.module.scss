@@ -1,9 +1,8 @@
 #main {
-    padding: 20px 0;
-    grid-area: main;
     display: grid;
     gap: 10px;
     grid-template: var(--homeGrid);
+    padding: 20px 0;
 
     > aside {
         align-self: start;

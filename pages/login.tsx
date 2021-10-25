@@ -4,7 +4,7 @@ import LoginForm from '../src/parts/loginForm'
 import Footer from '../src/parts/footer'
 import styles from '../styles/app.module.scss'
 
-const Login: NextPage = () => {
+const LoginPage: NextPage = () => {
     return (
         <div id={styles.container}>
             <Header menu={false} page="login"/>
@@ -14,4 +14,4 @@ const Login: NextPage = () => {
     )
 }
 
-export default Login
+export default LoginPage

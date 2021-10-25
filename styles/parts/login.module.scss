@@ -1,18 +1,23 @@
 #login {
     display: grid;
-    grid-area: main;
     gap: 10px;
     grid-template: var(--loginGrid);
     padding: 5em 0;
 
     #loginForm {
         display: flex;
-        justify-content: flex-end;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
         height: 100%;
+        padding: 30px;
+        text-align: center;
+        gap: 5px;
     
-        #loginInput {
+        #loginInput,
+        button {
             height: 40px;
+            width: 100%;
         }
     }
 }

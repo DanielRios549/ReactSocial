@@ -6,6 +6,8 @@ const post = (request: NextApiRequest, response: NextApiResponse) => {
         const token = process.env.DATO_READ_TOKEN
         const url = 'https://graphql.datocms.com/'
 
+        response.setHeader('Cache-Control', 's-maxage=30, stale-while-revalidate')
+
         fetch(url, {
             method: 'POST',
             headers: {

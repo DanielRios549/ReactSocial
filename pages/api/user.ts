@@ -3,8 +3,10 @@ import User from '../../src/types/user'
 
 
 const user = (request: NextApiRequest, response: NextApiResponse<User>) => {
-    const username = 'DanielRios549'
+    const username = request.body.user
     const url = `https://api.github.com/users/${username}`
+
+    response.setHeader('Cache-Control', 's-maxage=30, stale-while-revalidate')
 
     fetch(url).then(async (data) => {
         const github = await data.json()
