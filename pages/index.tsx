@@ -30,7 +30,7 @@ export const getServerSideProps: GetServerSideProps<User> = async (context) => {
 
     const authUrl = 'https://alurakut.vercel.app/api/auth'
 
-    const cookie = nookies.get(context as any)
+    const cookie = nookies.get(context)
     const token = cookie.token
 
     // Verify if the user is authenticated
