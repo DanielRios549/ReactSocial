@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import User from '../../src/types/user'
 
 
-const user = (request: NextApiRequest, response: NextApiResponse<User>) => {
+export default function user(request: NextApiRequest, response: NextApiResponse<User>) {
     const username = request.body.user
     const url = `https://api.github.com/users/${username}`
 
@@ -18,5 +18,3 @@ const user = (request: NextApiRequest, response: NextApiResponse<User>) => {
         })
     });
 }
-
-export default user

@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 
-const post = (request: NextApiRequest, response: NextApiResponse) => {
+export default function post(request: NextApiRequest, response: NextApiResponse) {
     if (request.method === 'POST') {
         const token = process.env.DATO_READ_TOKEN
         const url = 'https://graphql.datocms.com/'
@@ -38,5 +38,3 @@ const post = (request: NextApiRequest, response: NextApiResponse) => {
         })
     }
 }
-
-export default post

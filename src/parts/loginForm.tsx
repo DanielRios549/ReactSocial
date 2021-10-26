@@ -1,37 +1,16 @@
-import React, { useState } from 'react'
-import { useRouter } from 'next/router'
-import nookies from 'nookies'
+import React, { useContext } from 'react'
+import { useForm } from 'react-hook-form'
+import { useAuth } from '../contexts/auth'
 import Box from '../components/box'
 import styles from '../../styles/parts/login.module.scss'
 
 
 const LoginForm: React.FC = () => {
-    const router = useRouter()
-    const [user, setUser] = useState('')
+    const {user, setUser, signIn} = useAuth()
+    const {register, handleSubmit} = useForm()
 
-    const handleLogin = (event: any) => {
-        event.preventDefault()
-
-        fetch('https://alurakut.vercel.app/api/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                githubUser: user
-            })
-        })
-        .then(async response => {
-            const data = await response.json()
-            const token = data.token
-
-            nookies.set(null, 'token', token, {
-                path: '/',
-                maxAge: 86400,
-            })
-
-            router.push('/')
-        })
+    const handleLogin = async (data: any) => {
+        await signIn(data)
     }
     return (
         <main id={styles.login}>
@@ -39,16 +18,15 @@ const LoginForm: React.FC = () => {
                 <p>Test</p>
             </Box>
             <Box single area="form">
-                <form onSubmit={handleLogin} id={styles.loginForm}>
+                <form onSubmit={handleSubmit(handleLogin)} id={styles.loginForm}>
                     <h3>Enter with your Github User</h3>
                     <input 
+                        {...register('username', { required: true })}
                         id={styles.loginInput}
                         type="text"
                         placeholder="Type your username"
-                        name="user"
+                        name="username"
                         aria-label="Type your username"
-                        value={user}
-                        onChange={(event) => setUser(event.target.value)}
                     />
                     <button type="submit">Login</button>
                 </form>
