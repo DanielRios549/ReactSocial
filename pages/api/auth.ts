@@ -15,7 +15,14 @@ export default function auth(request: NextApiRequest, response: NextApiResponse)
             badResponse()
         }
         else {
-            const verify = jwt.verify(token, process.env.JWT_SECRET)
+            let verify = undefined
+    
+            try {
+                verify = jwt.verify(token, process.env.JWT_SECRET)
+            }
+            catch {
+                verify = undefined
+            }
 
             let isAuthenticated = false
 

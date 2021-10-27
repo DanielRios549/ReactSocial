@@ -23,6 +23,15 @@ export const getServerSideProps: GetServerSideProps<User> = async (context) => {
     const url = process.env.SITE_URL
     const {token} = nookies.get(context)
 
+    const moveToLogin = () => {
+        return {
+            redirect: {
+                destination: '/login',
+                permanent: false
+            }
+        }
+    }
+
     // Verify if the user is authenticated
 
     //const {user, verify} = useAuth()
@@ -39,12 +48,7 @@ export const getServerSideProps: GetServerSideProps<User> = async (context) => {
         // Redirect to login if token is not valid
 
         if (isAuthenticated !== true) {
-            return {
-                redirect: {
-                    destination: '/login',
-                    permanent: false
-                }
-            }
+            return moveToLogin()
         }
 
         // Get user data if token is valid
@@ -72,13 +76,11 @@ export const getServerSideProps: GetServerSideProps<User> = async (context) => {
             }
         }
     }
+
+    // Redirect to login if token does not exists
+
     else {
-        return {
-            redirect: {
-                destination: '/login',
-                permanent: false
-            }
-        }
+        return moveToLogin()
     }
 }
 
