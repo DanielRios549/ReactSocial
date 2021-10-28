@@ -2,18 +2,36 @@ import jwt from 'jsonwebtoken'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 
-export default function login(resquest: NextApiRequest, response: NextApiResponse) {
-    const badResponse = () => {
-        return response.status(400).json({
-            message: 'Nothing to show'
+export default async function login(resquest: NextApiRequest, response: NextApiResponse) {
+    // Authenticaton to use Github API
+    // Without this you can use the API only 60 times per hours
+
+    const auth = `${process.env.GITHUB_USER}:${process.env.GITHUB_TOKEN}`
+    const url = `https://api.github.com/users`
+    console.log(auth)
+
+    //response.setHeader('Cache-Control', 's-maxage=30, stale-while-revalidate')
+
+    const badResponse = (error: number, message: string) => {
+        return response.status(error).json({
+            message: message
         })
     }
 
     if (resquest.method === 'POST') {
-        const user = resquest.body.user
+        const username = resquest.body.user
+        const user = await fetch(`${url}/${username}`, {
+            headers: {
+                Authorization: `Basic ${auth}`
+            }
+        })
+        .then(async (data) => await data.json())
 
-        if (user === undefined) {
-            badResponse()
+        if (user.message === 'Not Found') {
+            badResponse(404, 'User Not Found on Github')
+        }
+        else if(user.message !== undefined) {
+            badResponse(403, user.message)
         }
         else {
             response.status(200).json({
@@ -22,6 +40,6 @@ export default function login(resquest: NextApiRequest, response: NextApiRespons
         }
     }
     else {
-        badResponse()
+        badResponse(400, 'Nothing to show')
     }
 }

@@ -31,13 +31,17 @@ export const AuthProvider: React.FC = (props: any) => {
         .then(async (response) => {
             const {token} = await response.json()
 
-            nookies.set(null, 'token', token, {
-                path: '/',
-                maxAge: 86400, // 1 day
-            })
+            // Create the cookie if API returns the token
 
-            setUser({username})
-            Router.push('/')
+            if (token !== undefined) {
+                nookies.set(null, 'token', token, {
+                    path: '/',
+                    maxAge: 86400, // 1 day
+                })
+
+                setUser({username})
+                Router.push('/')
+            }
         })
     }
 
