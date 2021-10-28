@@ -34,8 +34,6 @@ export const getServerSideProps: GetServerSideProps<User> = async (context) => {
 
     // Verify if the user is authenticated
 
-    //const {user, verify} = useAuth()
-
     if (token !== undefined) {
         const {isAuthenticated} = await fetch(url + '/api/auth', {
             method: 'POST',
@@ -54,25 +52,10 @@ export const getServerSideProps: GetServerSideProps<User> = async (context) => {
         // Get user data if token is valid
 
         else {
-            const { user } = jwt.decode(token) as any
-
-            const data: User = await fetch(url + '/api/user', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    user: user
-                })
-            })
-            .then(async (info) => await info.json())
+            const { user, name, image } = jwt.decode(token) as User
             
             return {
-                props: {
-                    user: data.user,
-                    name: data.name,
-                    image: data.image
-                }
+                props: {user, name, image}
             }
         }
     }
