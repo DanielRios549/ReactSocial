@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default function post(request: NextApiRequest, response: NextApiResponse) {
     if (request.method === 'POST') {
-        const token = process.env.DATO_READ_TOKEN
+        const token = process.env.DATO_API_READ_TOKEN
         const url = 'https://graphql.datocms.com/'
 
         response.setHeader('Cache-Control', 's-maxage=30, stale-while-revalidate')
