@@ -1,4 +1,5 @@
-import type { GetServerSideProps, GetStaticProps, NextPage } from 'next'
+import React from 'react'
+import type { GetServerSideProps, NextPage } from 'next'
 import nookies from 'nookies'
 import jwt from 'jsonwebtoken'
 import User from '../src/types/user'
@@ -6,7 +7,6 @@ import Header from '../src/parts/header'
 import Main from '../src/parts/mainContent'
 import Footer from '../src/parts/footer'
 import styles from '../styles/app.module.scss'
-import React from 'react'
 
 const HomePage: NextPage<User> = (props) => {
     return (
@@ -18,7 +18,6 @@ const HomePage: NextPage<User> = (props) => {
     )
 }
 
-//export const getStaticProps: GetStaticProps<User> = async (context) => {
 export const getServerSideProps: GetServerSideProps<User> = async (context) => {
     const url = process.env.SITE_URL
     const {token} = nookies.get(context)

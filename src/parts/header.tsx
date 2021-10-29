@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import NavLink from '../components/navLink'
 import styles from '../../styles/parts/header.module.scss'
 
 type Props = {
@@ -29,9 +30,9 @@ const Header: React.FC<Props> = (props) => {
                             <button onClick={handleMenu} id={styles.menuToggle}/>
                             <nav id={styles.menu} className={menu === true ? styles.active : styles.hide}>
                                 <ul>
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">Friends</a></li>
-                                    <li><a href="#">Communities</a></li>
+                                    <li><NavLink href="/" activeClassName={styles.active}>Home</NavLink></li>
+                                    <li><NavLink href="/friends" activeClassName={styles.active}>Friends</NavLink></li>
+                                    <li><NavLink href="/communities" activeClassName={styles.active}>Communities</NavLink></li>
                                 </ul>
                             </nav>
                         </>
