@@ -4,12 +4,19 @@ import styles from '../../styles/components/box.module.scss'
 type Props = {
     single?: boolean
     area: string
+    noBackground?: boolean
     tag?: 'div' | 'aside' | 'article' | 'section'
 }
 
 const Box: React.FC<Props> = (props) => {
     var Tag: any = 'div'
-    var type = props.single === true ? styles.single : styles.multi
+
+    if (props.noBackground === true) {
+        var type = 'none'
+    }
+    else {
+        var type = props.single === true ? styles.single : styles.multi
+    }
 
     if (props.tag !== undefined) {
         Tag = props.tag

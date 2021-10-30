@@ -9,7 +9,6 @@ type Props = {
 
 const NavLink: React.FC<Props> = (props) => {
     const router = useRouter()
-    console.log(router.pathname)
 
     return (
         <Link passHref href={props.href}>
