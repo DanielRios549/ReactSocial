@@ -21,10 +21,12 @@ const Header: React.FC<Props> = (props) => {
             <Head>
                 <title>Reakut - {props.page}</title>
                 <meta name="description" content="Social Network build with NextJS (Study purposes)" />
-                <link rel="icon" href="/favicon.ico" />
+                <meta name="theme-color" content="#242526" />
+                <link rel="icon" href="/images/favicon.png" />
+                <link rel="manifest" href="manifest.json" />
             </Head>
             <header id={styles.header}>
-                <img src="/vercel.svg" alt="logo" width={150} height={20} className={styles.logo}/>{
+                <img src="/images/vercel.svg" alt="logo" width={150} height={20} className={styles.logo}/>{
                     props.menu === true &&
                         <>
                             <button onClick={handleMenu} id={styles.menuToggle}/>

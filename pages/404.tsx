@@ -13,7 +13,7 @@ const Error404Page: NextPage = () => {
             <Header menu={false} page="home"/>
             <main id={styles.main}>
                 <Box noBackground area="form">
-                    <Image src="/404.png" alt="404" width={300} height={100} layout="responsive"/>
+                    <Image src="/images/404.png" alt="404" width={300} height={100} layout="responsive"/>
                 </Box>
             </main>
             <Footer />

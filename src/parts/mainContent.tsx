@@ -38,7 +38,7 @@ const Main: React.FC<User> = (props) => {
     return (
         <main id={styles.main}>
             <Box single key="panel" area="panel" tag="aside">
-                <UserSidebar user={props.user}/>
+                <UserSidebar user={props.user} image={props.image}/>
             </Box>
             <Box single key="wellcome" area="wellcome" tag="article">
                 <h1>Wellcome {props.name}!</h1>

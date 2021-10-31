@@ -12,6 +12,12 @@
 /.next/
 /out/
 
+# next pwa
+
+/public/sw.js
+/public/work*.js
+/public/*.js.map
+
 # production
 /build
 
