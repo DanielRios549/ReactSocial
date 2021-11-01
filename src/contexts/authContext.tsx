@@ -1,14 +1,26 @@
 import React, { createContext, useState } from 'react'
 import Router from 'next/router'
 import nookies from 'nookies'
+import Relation from '../types/relation'
+import { useLocalStorage } from '../hooks/useLocalStorage'
 
 type User = {
     username: string
 }
 
 type Auth = {
+    // States
+
     user: User | undefined
+    following: Relation[]
+
+    // Setters
+
     setUser: React.Dispatch<React.SetStateAction<User | undefined>>
+    setFollowing: React.Dispatch<React.SetStateAction<Relation[]>>
+
+    // API Functions
+
     signIn: (data: User) => Promise<User | any>
     verify: (token: string) => any
 }
@@ -17,6 +29,7 @@ export const AuthContext = createContext({} as Auth)
 
 export const AuthProvider: React.FC = (props: any) => {
     const [user, setUser] = useState<User>()
+    const [following, setFollowing] = useLocalStorage<Relation[]>('following', [])
 
     const signIn = async ({username}: User) => {
         fetch('/api/login', {
@@ -29,7 +42,7 @@ export const AuthProvider: React.FC = (props: any) => {
             })
         })
         .then(async (response) => {
-            const {token} = await response.json()
+            const {token, following} = await response.json()
 
             // Create the cookie if API returns the token
 
@@ -37,9 +50,10 @@ export const AuthProvider: React.FC = (props: any) => {
                 nookies.set(null, 'token', token, {
                     path: '/',
                     maxAge: 86400, // 1 day
-                })
+                })   
 
                 setUser({username})
+                setFollowing(following)
                 Router.push('/')
             }
         })
@@ -56,12 +70,8 @@ export const AuthProvider: React.FC = (props: any) => {
     }
 
     return (
-        <AuthContext.Provider value={{user, setUser, signIn, verify}}>
+        <AuthContext.Provider value={{user, following, setUser, setFollowing, signIn, verify}}>
             {props.children}
         </AuthContext.Provider>
     )
 }
-
-// Custom Hook to use AuthContext
-
-export const useAuth = () => React.useContext(AuthContext)

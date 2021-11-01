@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken'
 import { NextApiRequest, NextApiResponse } from 'next'
 import User from '../../src/types/user'
+import Relation from '../../src/types/relation'
 
 
 export default async function login(resquest: NextApiRequest, response: NextApiResponse) {
@@ -17,13 +18,15 @@ export default async function login(resquest: NextApiRequest, response: NextApiR
         // Without this you can use the API only 60 times per hours
 
         const auth = `${process.env.GITHUB_USER}:${process.env.GITHUB_TOKEN}`
-        const url = `https://api.github.com/users`
+        const url = 'https://api.github.com/users'
         const username = resquest.body.user
 
+        const headers = {
+            Authorization: `Basic ${auth}`
+        }
+
         const user = await fetch(`${url}/${username}`, {
-            headers: {
-                Authorization: `Basic ${auth}`
-            }
+            headers: headers
         })
         .then(async (data) => await data.json())
 
@@ -37,10 +40,31 @@ export default async function login(resquest: NextApiRequest, response: NextApiR
             const info: User = {
                 user: user.login,
                 name: user.name,
-                image: user.avatar_url,
+                image: user.avatar_url
             }
+
+            // Find the following after verify if the user exists
+
+            const following = await fetch(`${url}/${info.user}/following`, {
+                headers: headers
+            })
+            .then(async (data) => {
+                const github: any[] = await data.json()
+                const returnData: Relation[] = []
+
+                github.map((item) => {
+                    returnData.push({
+                        name: item.login,
+                        image: item.avatar_url
+                    })
+                })
+
+                return returnData
+            })
+
             response.status(200).json({
-                token: jwt.sign(info, process.env.JWT_SECRET, {algorithm: 'HS256'})
+                token: jwt.sign(info, process.env.JWT_SECRET, {algorithm: 'HS256'}),
+                following: following
             });
         }
     }

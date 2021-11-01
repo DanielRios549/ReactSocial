@@ -1,12 +1,12 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { useAuth } from '../contexts/authContext'
+import { useAuth } from '../hooks/useAuth'
 import Box from '../components/box'
 import styles from '../../styles/parts/login.module.scss'
 
 
 const LoginForm: React.FC = () => {
-    const {user, setUser, signIn} = useAuth()
+    const {signIn} = useAuth()
     const {register, handleSubmit} = useForm()
 
     const handleLogin = async (data: any) => {

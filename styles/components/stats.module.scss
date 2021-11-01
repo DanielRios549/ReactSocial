@@ -2,7 +2,7 @@
 
 #stats {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 
     @include mobileSmall() {
         display: flex;
@@ -11,8 +11,7 @@
     }
 
     img[role='stats'] {
-        object-fit: cover;
-        max-width: 100%;
-        max-height: 170px;
+        width: auto;
+        max-height: 160px;
     }
 }

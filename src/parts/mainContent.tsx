@@ -6,13 +6,14 @@ import Stats from '../components/stats'
 import Relations from '../components/relations'
 import Relation from '../types/relation'
 import Post from '../types/post'
+import { useAuth } from '../hooks/useAuth'
 import styles from '../../styles/parts/main.module.scss'
 
 const Main: React.FC<User> = (props) => {
     const [posts, setPosts] = useState<Post[]>([])
     
     const [communities, setCommunities] = useState<Relation[]>([])
-    const [following, setFollowing] = useState<Relation[]>([])
+    const { following } = useAuth()
 
     useEffect(() => {
         fetch('/api/post', {
