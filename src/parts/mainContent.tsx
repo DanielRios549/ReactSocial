@@ -35,6 +35,19 @@ const Main: React.FC<User> = (props) => {
         }
     }
 
+    const stats = {
+        url: 'https://github-readme-stats.vercel.app/api',
+        user: `username=${props.user}`,
+        theme: 'theme=react',
+        background: 'bg_color=242526',
+        border: 'hide_border=true',
+        langs: 'langs_count=7',
+        icons: 'show_icons=true',
+        commits: 'include_all_commits=true'
+    }
+
+    const commonStats = `${stats.user}&${stats.theme}&${stats.border}&${stats.background}`
+
     return (
         <main id={styles.main}>
             <Box single key="panel" area="panel" tag="aside">
@@ -42,6 +55,10 @@ const Main: React.FC<User> = (props) => {
             </Box>
             <Box single key="wellcome" area="wellcome" tag="article">
                 <h1>Wellcome {props.name}!</h1>
+                <section role="stats_frame">
+                    <img role="stats" alt="stats" src={`${stats.url}?${commonStats}&${stats.icons}&${stats.commits}&hide_rank=true`} />
+                    <img role="stats" alt="langs" src={`${stats.url}/top-langs/?${commonStats}&${stats.langs}&layout=compact`} />
+                </section>
             </Box>
             <Box single key="form" area="form" tag="article">
                 <h2>Let's Start</h2>

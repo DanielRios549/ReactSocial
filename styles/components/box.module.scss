@@ -18,4 +18,11 @@
     img {
         border-radius: var(--radius);
     }
+    section[role="stats_frame"] {
+        display: flex;
+
+        img[role='stats'] {
+            width: 50%;
+        }
+    }
 }
