@@ -10,6 +10,7 @@ const Stats: React.FC<Props> = (props) => {
     const config = {
         url: 'https://github-readme-stats.vercel.app/api',
         user: `username=${props.user}`,
+        title: 'GitHub Stats',
         theme: 'theme=react',
         background: 'bg_color=242526',
         border: 'hide_border=true',
@@ -22,7 +23,7 @@ const Stats: React.FC<Props> = (props) => {
 
     return (
         <section id={styles.stats} role="stats_frame">
-            <img role="stats" alt="stats" src={`${config.url}?${commonConfig}&${config.icons}&${config.commits}&hide_rank=true`} />
+            <img role="stats" alt="stats" src={`${config.url}?custom_title=${config.title}&${commonConfig}&${config.icons}&${config.commits}&hide_rank=true`} />
             <img role="stats" alt="langs" src={`${config.url}/top-langs/?${commonConfig}&${config.langs}&layout=compact`} />
         </section>
     )
