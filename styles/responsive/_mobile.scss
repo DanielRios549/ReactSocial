@@ -1,6 +1,8 @@
+@import '../config/breakpoints';
+
 // Mobile
 
-@media (max-width: $tablet + 'px') {
+@include mobile() {
     :root {
         --mainGrid:
             "header"
@@ -19,7 +21,7 @@
 
 // Mobile Landscape
 
-@media (min-width: $mobile + 1 + 'px') and (max-width: $tablet + 'px') {
+@include mobileLarge {
     :root {
         --alignHeader: flex-start;
         --alignFooter: space-between;
@@ -31,7 +33,7 @@
 
 // Mobile Portrait
 
-@media (max-width: $mobile + 'px') {
+@include mobileSmall {
     :root {
         --alignHeader: center;
         --alignFooter: center;

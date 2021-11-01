@@ -1,6 +1,8 @@
+@import '../config/breakpoints';
+
 // Desktop
 
-@media (min-width: $desktop + 1 + 'px') {
+@include desktop() {
     :root {
         --alignHeader: flex-start;
         --alignFooter: space-between;

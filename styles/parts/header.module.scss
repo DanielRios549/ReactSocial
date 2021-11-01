@@ -20,7 +20,7 @@
         height: 40px;
         cursor: pointer;
     }
-    @media (max-width: $desktop + 'px') {
+    @include touch() {
         #menu {
             background-color: var(--secondary);
             position: fixed;

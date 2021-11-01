@@ -1,6 +1,8 @@
+@import '../config/breakpoints';
+
 // Tablet
 
-@media (min-width: $tablet + 1 + 'px') and (max-width: $desktop + 'px') {
+@include tablet() {
     :root {
         --alignHeader: flex-start;
         --alignFooter: space-between;
