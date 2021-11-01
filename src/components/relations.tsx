@@ -9,7 +9,7 @@ type Props = {
 
 const Relations: React.FC<Props> = (props) => {
     return (
-        <section>
+        <section role="relations">
             <h2>{`${props.name} (${props.items.length})`}</h2>
             <ul>{
                 props.items.map((item, index) => (

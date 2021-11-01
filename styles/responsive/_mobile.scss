@@ -5,9 +5,9 @@
 @include mobile() {
     :root {
         --mainGrid:
-            "header"
-            "main"
-            "footer"
+            "header" 100px
+            "main" 1fr
+            "footer" 150px
             / 1fr
         ;
         --loginGrid: 
@@ -23,6 +23,14 @@
 
 @include mobileLarge {
     :root {
+        --homeGrid: 
+            "panel" 1fr 
+            "wellcome" 220px
+            "form" 200px
+            "posts" 1fr
+            "aside" 1fr
+            / 1fr
+        ;
         --alignHeader: flex-start;
         --alignFooter: space-between;
         --padding: 0 20px;
@@ -35,6 +43,14 @@
 
 @include mobileSmall {
     :root {
+        --homeGrid: 
+            "panel" 1fr 
+            "wellcome" 440px
+            "form" 200px
+            "posts" 1fr
+            "aside" 1fr
+            / 1fr
+        ;
         --alignHeader: center;
         --alignFooter: center;
         --padding: 0 60px;

@@ -10,17 +10,17 @@
         --menu: column;
         --toggleMenuShow: block;
         --mainGrid:
-            "header header header"
-            ". main ."
-            "footer footer footer"
+            "header header header" 80px 
+            ". main ." 1fr
+            "footer footer footer" 100px
             / 1fr 785px 1fr
         ;
         --homeGrid: 
-            "panel"
-            "wellcome"
-            "form"
-            "posts"
-            "aside"
+            "panel" 1fr 
+            "wellcome" 220px
+            "form" 200px
+            "posts" 1fr
+            "aside" 1fr
             / 1fr
         ;
         --loginGrid: 

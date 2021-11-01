@@ -10,15 +10,15 @@
         --menu: row;
         --toggleMenuShow: none;
         --mainGrid:
-            "header header header" 100px
-            ". main ." 200px
-            "footer footer footer" 1fr
+            "header header header" 80px
+            ". main ." 1fr
+            "footer footer footer" 100px
             / 1fr minmax(800px, 1200px) 1fr
         ;
         --homeGrid: 
-            "panel wellcome aside"
-            "panel form aside"
-            "panel posts aside"
+            "panel wellcome aside" 220px
+            "panel form aside" 200px
+            "panel posts aside" 1fr
             / minmax(150px, 250px) 580px minmax(250px, 350px)
         ;
         --loginGrid: 
