@@ -1,6 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { useAuth } from '../hooks/useAuth'
+import { useAuth } from '../hooks/useContext'
 import Box from '../components/box'
 import styles from '../../styles/parts/login.module.scss'
 

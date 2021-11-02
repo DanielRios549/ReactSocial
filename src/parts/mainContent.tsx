@@ -3,27 +3,17 @@ import Box from '../components/box'
 import UserSidebar from '../components/userSidebar'
 import User from '../types/user'
 import Stats from '../components/stats'
+import Post from '../components/post'
 import Relations from '../components/relations'
 import Relation from '../types/relation'
-import Post from '../types/post'
-import { useAuth } from '../hooks/useAuth'
+import { useAuth, usePost } from '../hooks/useContext'
 import styles from '../../styles/parts/main.module.scss'
 
 const Main: React.FC<User> = (props) => {
-    const [posts, setPosts] = useState<Post[]>([])
+    const { posts, setPosts } = usePost()
     
     const [communities, setCommunities] = useState<Relation[]>([])
     const { following } = useAuth()
-
-    useEffect(() => {
-        fetch('/api/post', {
-            method: 'POST',
-        })
-        .then(async (dato) => {
-            const response = await dato.json()
-            setPosts([...posts, ...response.data.allPosts])
-        })
-    }, [])
 
     const handleForm = (event: any) => {
         event.preventDefault()
@@ -42,11 +32,11 @@ const Main: React.FC<User> = (props) => {
             <Box single key="panel" area="panel" tag="aside">
                 <UserSidebar user={props.user} image={props.image}/>
             </Box>
-            <Box single key="wellcome" area="wellcome" tag="article">
+            <Box single key="wellcome" area="wellcome" tag="section">
                 <h1>Wellcome {props.name}!</h1>
                 <Stats user={props.user}/>
             </Box>
-            <Box single key="form" area="form" tag="article">
+            <Box single key="form" area="form" tag="section">
                 <h2>Let's Start</h2>
                 <form onSubmit={handleForm}>
                     <input 
@@ -57,11 +47,9 @@ const Main: React.FC<User> = (props) => {
                     />
                 </form>
             </Box>
-            <Box key="posts" area="posts" tag="article">{
+            <Box key="posts" area="posts" tag="section">{
                 posts.map((post, index) => (
-                    <article key={index}>{
-                        post.text
-                    }</article>
+                    <Post creator={post.text} key={index}/>
                 ))
             }</Box>
             <Box key="aside" area="aside" tag="aside">{
