@@ -13,11 +13,13 @@ type Auth = {
 
     user: User | undefined
     following: Relation[]
+    followers: Relation[]
 
     // Setters
 
     setUser: React.Dispatch<React.SetStateAction<User | undefined>>
     setFollowing: React.Dispatch<React.SetStateAction<Relation[]>>
+    setFollowers: React.Dispatch<React.SetStateAction<Relation[]>>
 
     // API Functions
 
@@ -30,6 +32,7 @@ export const AuthContext = createContext({} as Auth)
 export const AuthProvider: React.FC = (props: any) => {
     const [user, setUser] = useState<User>()
     const [following, setFollowing] = useLocalStorage<Relation[]>('following', [])
+    const [followers, setFollowers] = useLocalStorage<Relation[]>('followers', [])
 
     const signIn = async ({username}: User) => {
         fetch('/api/login', {
@@ -42,7 +45,7 @@ export const AuthProvider: React.FC = (props: any) => {
             })
         })
         .then(async (response) => {
-            const {token, following} = await response.json()
+            const {token, following, followers} = await response.json()
 
             // Create the cookie if API returns the token
 
@@ -54,6 +57,7 @@ export const AuthProvider: React.FC = (props: any) => {
 
                 setUser({username})
                 setFollowing(following)
+                setFollowers(followers)
                 Router.push('/')
             }
         })
@@ -70,7 +74,7 @@ export const AuthProvider: React.FC = (props: any) => {
     }
 
     return (
-        <AuthContext.Provider value={{user, following, setUser, setFollowing, signIn, verify}}>
+        <AuthContext.Provider value={{user, following, followers, setUser, setFollowing, setFollowers, signIn, verify}}>
             {props.children}
         </AuthContext.Provider>
     )

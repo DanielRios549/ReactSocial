@@ -11,9 +11,9 @@ import styles from '../../styles/parts/main.module.scss'
 
 const Main: React.FC<User> = (props) => {
     const { posts, setPosts } = usePost()
-    
+
     const [communities, setCommunities] = useState<Relation[]>([])
-    const { following } = useAuth()
+    const { following, followers } = useAuth()
 
     const handleForm = (event: any) => {
         event.preventDefault()
@@ -56,6 +56,7 @@ const Main: React.FC<User> = (props) => {
                 <>
                     <Relations key="Communities" name="Communities" items={communities}/>
                     <Relations key="Following" name="Following" items={following}/>
+                    <Relations key="Followers" name="Followers" items={followers}/>
                 </>
             }</Box>
         </main>

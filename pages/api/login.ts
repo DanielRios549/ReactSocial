@@ -43,28 +43,37 @@ export default async function login(resquest: NextApiRequest, response: NextApiR
                 image: user.avatar_url
             }
 
-            // Find the following after verify if the user exists
+            // Find more info after verify if the user exists
 
-            const following = await fetch(`${url}/${info.user}/following`, {
-                headers: headers
-            })
-            .then(async (data) => {
-                const github: any[] = await data.json()
-                const returnData: Relation[] = []
-
-                github.map((item) => {
-                    returnData.push({
-                        name: item.login,
-                        image: item.avatar_url
+            const followFetch = async (link: string) => {
+                const items = await fetch(link, {
+                    headers: headers
+                })
+                .then(async (data) => {
+                    const github: any[] = await data.json()
+                    const returnData: Relation[] = []
+    
+                    github.map((item) => {
+                        returnData.push({
+                            name: item.login,
+                            image: item.avatar_url
+                        })
                     })
+    
+                    return returnData
                 })
 
-                return returnData
-            })
+                return items
+            }
+
+            const following = await followFetch(`${url}/${info.user}/following`)
+
+            const followers = await followFetch(`${url}/${info.user}/followers`)
 
             response.status(200).json({
                 token: jwt.sign(info, process.env.JWT_SECRET, {algorithm: 'HS256'}),
-                following: following
+                following: following,
+                followers: followers
             });
         }
     }
