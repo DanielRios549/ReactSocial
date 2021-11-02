@@ -29,14 +29,14 @@ const Main: React.FC<User> = (props) => {
 
     return (
         <main id={styles.main}>
-            <Box single key="panel" area="panel" tag="aside">
+            <Box single area="panel" tag="aside">
                 <UserSidebar user={props.user} image={props.image}/>
             </Box>
-            <Box single key="wellcome" area="wellcome" tag="section">
+            <Box single area="wellcome" tag="section">
                 <h1>Wellcome {props.name}!</h1>
                 <Stats user={props.user}/>
             </Box>
-            <Box single key="form" area="form" tag="section">
+            <Box single area="form" tag="section">
                 <h2>Let's Start</h2>
                 <form onSubmit={handleForm}>
                     <input 
@@ -47,16 +47,16 @@ const Main: React.FC<User> = (props) => {
                     />
                 </form>
             </Box>
-            <Box key="posts" area="posts" tag="section">{
+            <Box area="posts" tag="section">{
                 posts.map((post, index) => (
                     <Post creator={post.text} key={index}/>
                 ))
             }</Box>
-            <Box key="aside" area="aside" tag="aside">{
+            <Box area="aside" tag="aside">{
                 <>
-                    <Relations key="Communities" name="Communities" items={communities}/>
-                    <Relations key="Following" name="Following" items={following}/>
-                    <Relations key="Followers" name="Followers" items={followers}/>
+                    <Relations name="Communities" items={communities}/>
+                    <Relations name="Following" items={following}/>
+                    <Relations name="Followers" items={followers}/>
                 </>
             }</Box>
         </main>
