@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import Link from 'next/link'
 import NavLink from '../components/navLink'
 import styles from '../../styles/parts/header.module.scss'
 
@@ -26,19 +27,23 @@ const Header: React.FC<Props> = (props) => {
                 <link rel="manifest" href="manifest.json" />
             </Head>
             <header id={styles.header}>
-                <img src="/images/vercel.svg" alt="logo" width={150} height={20} className={styles.logo}/>{
-                    props.menu === true &&
-                        <>
-                            <button onClick={handleMenu} id={styles.menuToggle}/>
-                            <nav id={styles.menu} className={menu === true ? styles.active : styles.hide}>
-                                <ul>
-                                    <li><NavLink href="/" activeClassName={styles.active}>Home</NavLink></li>
-                                    <li><NavLink href="/friends" activeClassName={styles.active}>Friends</NavLink></li>
-                                    <li><NavLink href="/communities" activeClassName={styles.active}>Communities</NavLink></li>
-                                </ul>
-                            </nav>
-                        </>
-                    }
+                <Link passHref href="/">
+                    <a>
+                        <img src="/images/reakut.png" alt="logo" width={150} height={20}/>
+                    </a>
+                </Link>
+                {props.menu === true &&
+                    <>
+                        <button onClick={handleMenu} id={styles.menuToggle}/>
+                        <nav id={styles.menu} className={menu === true ? styles.active : styles.hide}>
+                            <ul>
+                                <li><NavLink href="/" activeClassName={styles.active}>Home</NavLink></li>
+                                <li><NavLink href="/friends" activeClassName={styles.active}>Friends</NavLink></li>
+                                <li><NavLink href="/communities" activeClassName={styles.active}>Communities</NavLink></li>
+                            </ul>
+                        </nav>
+                    </>
+                }
                 <input type="text" id={styles.search} placeholder="Search"/>
             </header>
         </>

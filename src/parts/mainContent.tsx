@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Box from '../components/box'
 import UserSidebar from '../components/userSidebar'
 import User from '../types/user'
