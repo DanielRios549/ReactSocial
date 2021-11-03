@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import Box from '../components/box'
 import UserSidebar from '../components/userSidebar'
 import User from '../types/user'
@@ -10,20 +11,23 @@ import { useAuth, usePost } from '../hooks/useContext'
 import styles from '../../styles/parts/main.module.scss'
 
 const Main: React.FC<User> = (props) => {
-    const { posts, setPosts } = usePost()
+    const { posts, addPost } = usePost()
+    const {register, handleSubmit} = useForm()
 
     const [communities, setCommunities] = useState<Relation[]>([])
-    const { following, followers } = useAuth()
+    const { user, following, followers } = useAuth()
 
-    const handleForm = (event: any) => {
-        event.preventDefault()
-        let form = new FormData(event.target)
-        let data = {
-            text: form.get('post')?.toString()
+    const handlePost = (data: any) => {
+        const username = user?.username !== undefined ? user.username : undefined
+
+        if (username === undefined) {
+            console.error('There is a problem to get logged user.')
         }
-
-        if ((data.text !== undefined) && (data.text.length > 0)) {
-            setPosts([...posts, data])
+        else {
+            addPost({
+                text: data.text,
+                user: username
+            })
         }
     }    
 
@@ -38,18 +42,19 @@ const Main: React.FC<User> = (props) => {
             </Box>
             <Box single area="form" tag="section">
                 <h2>Let's Start</h2>
-                <form onSubmit={handleForm}>
+                <form onSubmit={handleSubmit(handlePost)}>
                     <input 
+                        {...register('text', { required: true })}
                         type="text"
                         placeholder="What is in your mind"
-                        name="post"
+                        name="text"
                         aria-label="What is in your mind"
                     />
                 </form>
             </Box>
             <Box area="posts" tag="section">{
                 posts.map((post, index) => (
-                    <Post creator={post.text} key={index}/>
+                    <Post text={post.text} user={post.user} key={index}/>
                 ))
             }</Box>
             <Box area="aside" tag="aside">{

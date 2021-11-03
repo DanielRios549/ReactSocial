@@ -17,7 +17,7 @@ type Auth = {
 
     // Setters
 
-    setUser: React.Dispatch<React.SetStateAction<User | undefined>>
+    setUser: React.Dispatch<React.SetStateAction<User>>
     setFollowing: React.Dispatch<React.SetStateAction<Relation[]>>
     setFollowers: React.Dispatch<React.SetStateAction<Relation[]>>
 
@@ -30,7 +30,7 @@ type Auth = {
 export const AuthContext = createContext({} as Auth)
 
 export const AuthProvider: React.FC = (props: any) => {
-    const [user, setUser] = useState<User>()
+    const [user, setUser] = useLocalStorage<User>('user', '')
     const [following, setFollowing] = useLocalStorage<Relation[]>('following', [])
     const [followers, setFollowers] = useLocalStorage<Relation[]>('followers', [])
 

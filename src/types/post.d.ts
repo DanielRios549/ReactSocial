@@ -1,5 +1,6 @@
 type Post = {
-    text?: string
+    text: string
+    user: string
 }
 
 export default Post
