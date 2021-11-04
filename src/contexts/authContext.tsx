@@ -1,12 +1,9 @@
 import React, { createContext, useState } from 'react'
 import Router from 'next/router'
 import nookies from 'nookies'
+import User from '../types/user'
 import Relation from '../types/relation'
 import { useLocalStorage } from '../hooks/useLocalStorage'
-
-type User = {
-    username: string
-}
 
 type Auth = {
     // States
@@ -30,7 +27,7 @@ type Auth = {
 export const AuthContext = createContext({} as Auth)
 
 export const AuthProvider: React.FC = (props: any) => {
-    const [user, setUser] = useLocalStorage<User>('user', '')
+    const [user, setUser] = useLocalStorage<User>('user', {})
     const [following, setFollowing] = useLocalStorage<Relation[]>('following', [])
     const [followers, setFollowers] = useLocalStorage<Relation[]>('followers', [])
 
@@ -45,7 +42,7 @@ export const AuthProvider: React.FC = (props: any) => {
             })
         })
         .then(async (response) => {
-            const {token, following, followers} = await response.json()
+            const {token, name, image, following, followers} = await response.json()
 
             // Create the cookie if API returns the token
 
@@ -55,7 +52,7 @@ export const AuthProvider: React.FC = (props: any) => {
                     maxAge: 86400, // 1 day
                 })   
 
-                setUser({username})
+                setUser({username, name, image})
                 setFollowing(following)
                 setFollowers(followers)
                 Router.push('/')

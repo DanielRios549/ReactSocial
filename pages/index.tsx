@@ -12,7 +12,7 @@ const HomePage: NextPage<User> = (props) => {
     return (
         <div id={styles.container}>
             <Header menu={true} page="home"/>
-            <Main user={props.user} name={props.name} image={props.image}/>
+            <Main username={props.username} name={props.name} image={props.image}/>
             <Footer />
         </div>
     )
@@ -51,10 +51,10 @@ export const getServerSideProps: GetServerSideProps<User> = async (context) => {
         // Get user data if token is valid
 
         else {
-            const { user, name, image } = jwt.decode(token) as User
+            const { username, name, image } = jwt.decode(token) as User
             
             return {
-                props: {user, name, image}
+                props: {username, name, image}
             }
         }
     }

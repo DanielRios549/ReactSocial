@@ -38,7 +38,7 @@ export default async function login(resquest: NextApiRequest, response: NextApiR
         }
         else {
             const info: User = {
-                user: user.login,
+                username: user.login,
                 name: user.name,
                 image: user.avatar_url
             }
@@ -66,12 +66,13 @@ export default async function login(resquest: NextApiRequest, response: NextApiR
                 return items
             }
 
-            const following = await followFetch(`${url}/${info.user}/following`)
+            const following = await followFetch(`${url}/${info.username}/following`)
 
-            const followers = await followFetch(`${url}/${info.user}/followers`)
+            const followers = await followFetch(`${url}/${info.username}/followers`)
 
             response.status(200).json({
                 token: jwt.sign(info, process.env.JWT_SECRET, {algorithm: 'HS256'}),
+                ...info,
                 following: following,
                 followers: followers
             });

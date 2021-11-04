@@ -11,11 +11,11 @@ import { useAuth, usePost } from '../hooks/useContext'
 import styles from '../../styles/parts/main.module.scss'
 
 const Main: React.FC<User> = (props) => {
-    const { posts, addPost } = usePost()
+    const {posts, addPost} = usePost()
     const {register, handleSubmit} = useForm()
 
     const [communities, setCommunities] = useState<Relation[]>([])
-    const { user, following, followers } = useAuth()
+    const {user, following, followers} = useAuth()
 
     const handlePost = (data: any) => {
         const username = user?.username !== undefined ? user.username : undefined
@@ -34,11 +34,11 @@ const Main: React.FC<User> = (props) => {
     return (
         <main id={styles.main}>
             <Box single area="panel" tag="aside">
-                <UserSidebar user={props.user} image={props.image}/>
+                <UserSidebar user={props.username} image={props.image}/>
             </Box>
             <Box single area="wellcome" tag="section">
                 <h1>Wellcome {props.name}!</h1>
-                <Stats user={props.user}/>
+                <Stats user={props.username}/>
             </Box>
             <Box single area="form" tag="section">
                 <h2>Let's Start</h2>

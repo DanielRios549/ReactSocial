@@ -2,7 +2,7 @@ import React from 'react'
 
 type Props = {
     user?: string
-    image: string
+    image?: string
 }
 
 

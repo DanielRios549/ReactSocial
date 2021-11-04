@@ -2,7 +2,7 @@ import React from 'react'
 import styles from '../../styles/components/stats.module.scss'
 
 type Props = {
-    user: string
+    user?: string
 }
 
 

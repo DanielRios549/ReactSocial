@@ -1,6 +1,6 @@
 type User = {
     name: string
-    user: string
+    username: string
     image: string
     following?: object[]
 }
