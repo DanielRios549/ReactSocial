@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import Box from '../components/box'
-import UserSidebar from '../components/userSidebar'
+import UserSidebar from '../components/sidebar'
 import User from '../types/user'
 import Stats from '../components/stats'
 import Post from '../components/post'

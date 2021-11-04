@@ -16,7 +16,7 @@ const Relations: React.FC<Props> = (props) => {
     }
     return (
         <section className={styles.relation}>
-            <h2>{`${props.name} (${props.items.length})`}</h2>
+            <h3 className={styles.header}>{`${props.name} (${props.items.length})`}</h3>
             <ul className={styles.items}>{
                 itemsToShow().map((item, index) => (
                     <li key={index} className={styles.item}>

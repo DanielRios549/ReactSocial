@@ -1,0 +1,30 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    .header {
+        font-size: 100%;
+        text-align: center;
+    }
+    a { 
+        display: block;
+        padding: 10px;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+.section:not(:last-child) {
+    margin-bottom: 20px;
+
+    &:after {
+        content: '';
+        border-radius: 50%;
+        background: var(--primary);
+        display: block;
+        width: 100%;
+        height: 5px;
+    }
+}
