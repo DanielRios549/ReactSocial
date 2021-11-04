@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from '../../styles/components/stats.module.scss'
+import { useAuth } from '../hooks/useContext'
 
 type Props = {
     user?: string
@@ -7,9 +8,12 @@ type Props = {
 
 
 const Stats: React.FC<Props> = (props) => {
+    const {user} = useAuth()
+    const username = props.user !== undefined ? props.user : user.username
+
     const config = {
         url: 'https://github-readme-stats.vercel.app/api',
-        user: `username=${props.user}`,
+        user: `username=${username}`,
         title: 'GitHub Stats',
         theme: 'theme=react',
         background: 'bg_color=242526',

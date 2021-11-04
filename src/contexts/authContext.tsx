@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext } from 'react'
 import Router from 'next/router'
 import nookies from 'nookies'
 import User from '../types/user'
@@ -49,12 +49,13 @@ export const AuthProvider: React.FC = (props: any) => {
             if (token !== undefined) {
                 nookies.set(null, 'token', token, {
                     path: '/',
-                    maxAge: 86400, // 1 day
-                })   
+                    maxAge: 86400,  // 1 day
+                })
 
                 setUser({username, name, image})
                 setFollowing(following)
                 setFollowers(followers)
+
                 Router.push('/')
             }
         })

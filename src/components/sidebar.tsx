@@ -1,5 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
+import { useAuth } from '../hooks/useContext'
 import styles from '../../styles/components/sidebar.module.scss'
 
 type Props = {
@@ -9,28 +11,24 @@ type Props = {
 
 
 const UserSidebar: React.FC<Props> = (props) => {
-    const github = `https://github.com/${props.user}`
+    const {user} = useAuth()
+
+    const username = props.user !== undefined ? props.user : user.username
+    const image = props.image !== undefined ? props.image : user.image
+    const link = `https://github.com/${username}`
 
     const links = [
-        [`${github}?tab=repositories`, 'Go to user repository on GitHub', 'Repositories'],
-        [`${github}?tab=stars`, 'Go to user stars on GitHub', 'Stars'],
+        [`${link}?tab=repositories`, 'Go to user repository on GitHub', 'Repositories'],
+        [`${link}?tab=stars`, 'Go to user stars on GitHub', 'Stars'],
     ]
 
-    const getImage = () => {
-        if ((props.user !== undefined) && (props.user !== '')) {
-            return props.image
-        }
-        else {
-            return '/images/user.jpg'
-        }
-    }
     return (
         <>
             <section className={styles.section}>
-                <img src={getImage()} alt="user"/>
+                <Image src={image} alt="user" width={200} height={220}/>
                 <h3 className={styles.header}>
-                    <Link passHref href={github}>
-                        <a title="Go to user profile on GitHub" target="_blank">@{props.user}</a>
+                    <Link passHref href={link}>
+                        <a title="Go to user profile on GitHub" target="_blank">@{username}</a>
                     </Link>
                 </h3>
             </section>
