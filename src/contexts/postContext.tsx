@@ -28,10 +28,10 @@ export const PostProvider: React.FC = (props: any) => {
     }
 
     const addPost = (data: PostInfo) => {
-        const {text, user} = data
+        const {text, user, image} = data
 
         if (user !== undefined) {
-            setPosts([...posts, {text, user}])
+            setPosts([...posts, {text, user, image}])
         }
     }
 
