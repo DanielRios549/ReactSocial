@@ -7,7 +7,7 @@ const Post: React.FC<PostType> = (props) => {
     return (
         <article className={styles.post}>
             <header className={styles.header}>  
-                <img src={`https://github.com/${props.user}.png?size=30`} alt="post-creator"/>
+                <img src={`${props.image}&size=30`} alt="post-creator"/>
                 <h3>@{props.user}</h3>
             </header>
             <section className={styles.text}>{

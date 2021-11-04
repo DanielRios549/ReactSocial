@@ -21,6 +21,7 @@ export default function post(request: NextApiRequest, response: NextApiResponse)
                         id
                         user
                         text
+                        image
                         _status
                         _firstPublishedAt
                     }

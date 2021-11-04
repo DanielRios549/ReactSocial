@@ -18,7 +18,7 @@ const Main: React.FC<User> = (props) => {
     const {user, following, followers} = useAuth()
 
     const handlePost = (data: any) => {
-        const username = user?.username !== undefined ? user.username : undefined
+        const username = user.username !== undefined ? user.username : undefined
 
         if (username === undefined) {
             console.error('There is a problem to get logged user.')
@@ -26,10 +26,11 @@ const Main: React.FC<User> = (props) => {
         else {
             addPost({
                 text: data.text,
-                user: username
+                user: username,
+                image: props.image
             })
         }
-    }    
+    }
 
     return (
         <main id={styles.main}>
@@ -54,7 +55,7 @@ const Main: React.FC<User> = (props) => {
             </Box>
             <Box area="posts" tag="section">{
                 posts.map((post, index) => (
-                    <Post text={post.text} user={post.user} key={index}/>
+                    <Post text={post.text} user={post.user} image={post.image} key={index}/>
                 ))
             }</Box>
             <Box area="aside" tag="aside">{

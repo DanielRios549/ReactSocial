@@ -8,7 +8,7 @@ import { useLocalStorage } from '../hooks/useLocalStorage'
 type Auth = {
     // States
 
-    user: User | undefined
+    user: User
     following: Relation[]
     followers: Relation[]
 
