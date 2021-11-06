@@ -21,7 +21,6 @@ type Auth = {
     // API Functions
 
     signIn: (data: User) => Promise<User | any>
-    verify: (token: string) => any
 }
 
 export const AuthContext = createContext({} as Auth)
@@ -42,7 +41,7 @@ export const AuthProvider: React.FC = (props: any) => {
             })
         })
         .then(async (response) => {
-            const {token, name, image, following, followers} = await response.json()
+            const {token, username, name, image, following, followers} = await response.json()
 
             // Create the cookie if API returns the token
 
@@ -61,18 +60,8 @@ export const AuthProvider: React.FC = (props: any) => {
         })
     }
 
-    const verify = async (token: string) => {
-        fetch('/api/auth', {
-            method: 'POST',
-            headers: {
-                'Authorization': `${token}`
-            }
-        })
-        .then(async (response) => response)
-    }
-
     return (
-        <AuthContext.Provider value={{user, following, followers, setUser, setFollowing, setFollowers, signIn, verify}}>
+        <AuthContext.Provider value={{user, following, followers, setUser, setFollowing, setFollowers, signIn}}>
             {props.children}
         </AuthContext.Provider>
     )

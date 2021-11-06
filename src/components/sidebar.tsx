@@ -13,8 +13,8 @@ type Props = {
 const UserSidebar: React.FC<Props> = (props) => {
     const {user} = useAuth()
 
-    const username = props.user !== undefined ? props.user : user.username
-    const image = props.image !== undefined ? props.image : user.image
+    const username = props.user || user.username
+    const image = props.image || user.image
     const link = `https://github.com/${username}`
 
     const links = [
@@ -25,7 +25,7 @@ const UserSidebar: React.FC<Props> = (props) => {
     return (
         <>
             <section className={styles.section}>
-                <Image src={image} alt="user" width={200} height={220}/>
+                <Image priority src={image} alt="user" width={200} height={220}/>
                 <h3 className={styles.header}>
                     <Link passHref href={link}>
                         <a title="Go to user profile on GitHub" target="_blank">@{username}</a>

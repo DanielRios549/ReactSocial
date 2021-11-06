@@ -4,17 +4,19 @@ import { useAuth } from '../hooks/useContext'
 
 type Props = {
     user?: string
+    name?: string
 }
 
 
 const Stats: React.FC<Props> = (props) => {
     const {user} = useAuth()
-    const username = props.user !== undefined ? props.user : user.username
+    const name = props.name ? `${props.name}'s ` : ''
+    const username = props.user || user.username
 
     const config = {
         url: 'https://github-readme-stats.vercel.app/api',
         user: `username=${username}`,
-        title: 'GitHub Stats',
+        title: `${name}GitHub Stats`,
         theme: 'theme=react',
         background: 'bg_color=242526',
         border: 'hide_border=true',

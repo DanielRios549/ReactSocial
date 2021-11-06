@@ -3,12 +3,14 @@ import { useForm } from 'react-hook-form'
 import Box from '../components/box'
 import UserSidebar from '../components/sidebar'
 import User from '../types/user'
+import { PostForm } from '../types/post'
 import Stats from '../components/stats'
 import Post from '../components/post'
 import Relations from '../components/relations'
 import Relation from '../types/relation'
 import { useAuth, usePost } from '../hooks/useContext'
 import styles from '../../styles/parts/mainContent.module.scss'
+
 
 const Main: React.FC<User> = (props) => {
     const {posts, addPost} = usePost()
@@ -17,17 +19,12 @@ const Main: React.FC<User> = (props) => {
     const [communities, setCommunities] = useState<Relation[]>([])
     const {user, following, followers} = useAuth()
 
-    const handlePost = (data: any) => {
-        const username = user.username !== undefined ? user.username : undefined
-
-        if (username === undefined) {
-            console.error('There is a problem to get logged user.')
-        }
-        else {
+    const handlePost = (data: PostForm) => {
+        if (data.text.trim().length > 0) {
             addPost({
                 text: data.text,
-                user: username,
-                image: props.image
+                user: user.username,
+                image: user.image
             })
         }
     }

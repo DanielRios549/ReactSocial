@@ -4,4 +4,8 @@ type Post = {
     image: string
 }
 
+export type PostForm = {
+    text: string
+}
+
 export default Post
