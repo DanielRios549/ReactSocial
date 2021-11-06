@@ -31,7 +31,7 @@ const Main: React.FC<User> = (props) => {
 
     return (
         <main id={styles.main}>
-            <Box single area="panel" tag="aside">
+            <Box single hide area="panel" tag="aside">
                 <UserSidebar user={props.username} image={props.image}/>
             </Box>
             <Box single area="wellcome" tag="section">

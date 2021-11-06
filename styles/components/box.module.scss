@@ -23,3 +23,8 @@
 .multi {
     color: var(--text);
 }
+.hide {
+    @include touch() {
+        display: none !important;
+    }
+}
