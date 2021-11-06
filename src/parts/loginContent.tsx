@@ -2,7 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useAuth } from '../hooks/useContext'
 import Box from '../components/box'
-import styles from '../../styles/parts/login.module.scss'
+import styles from '../../styles/parts/loginContent.module.scss'
 
 
 const LoginForm: React.FC = () => {

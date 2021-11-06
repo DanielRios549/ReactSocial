@@ -6,7 +6,7 @@ import User from '../src/types/user'
 import Header from '../src/parts/header'
 import Main from '../src/parts/mainContent'
 import Footer from '../src/parts/footer'
-import styles from '../styles/app.module.scss'
+import styles from '../styles/pages.module.scss'
 
 const HomePage: NextPage<User> = (props) => {
     return (

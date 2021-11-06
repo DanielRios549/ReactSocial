@@ -1,8 +1,8 @@
 import { NextPage } from 'next'
 import Header from '../src/parts/header'
-import LoginForm from '../src/parts/loginForm'
+import LoginForm from '../src/parts/loginContent'
 import Footer from '../src/parts/footer'
-import styles from '../styles/app.module.scss'
+import styles from '../styles/pages.module.scss'
 
 const LoginPage: NextPage = () => {
     return (

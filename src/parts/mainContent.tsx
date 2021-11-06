@@ -8,7 +8,7 @@ import Post from '../components/post'
 import Relations from '../components/relations'
 import Relation from '../types/relation'
 import { useAuth, usePost } from '../hooks/useContext'
-import styles from '../../styles/parts/main.module.scss'
+import styles from '../../styles/parts/mainContent.module.scss'
 
 const Main: React.FC<User> = (props) => {
     const {posts, addPost} = usePost()
