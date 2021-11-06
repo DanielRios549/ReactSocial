@@ -1,9 +1,48 @@
+@import '../config/breakpoints';
+
 #main {
     display: grid;
     gap: 10px;
-    grid-template: var(--homeGrid);
     padding: 20px 0;
 
+    @include desktop() {
+        grid-template: 
+            "panel wellcome aside" 220px
+            "panel form aside" 200px
+            "panel posts aside" 1fr
+            / minmax(150px, 250px) 580px minmax(250px, 350px)
+        ;
+    }
+    @include tablet() {
+        grid-template: 
+            "panel" 1fr 
+            "wellcome" 220px
+            "form" 200px
+            "posts" 1fr
+            "aside" 1fr
+            / 1fr
+        ;
+    }
+    @include mobileLarge() {
+        grid-template: 
+            "panel" 1fr 
+            "wellcome" 220px
+            "form" 200px
+            "posts" 1fr
+            "aside" 1fr
+            / 1fr
+        ;
+    }
+    @include mobileSmall() {
+        grid-template: 
+            "panel" 1fr 
+            "wellcome" 440px
+            "form" 200px
+            "posts" 1fr
+            "aside" 1fr
+            / 1fr
+        ;
+    }
     > aside {
         align-self: start;
     }

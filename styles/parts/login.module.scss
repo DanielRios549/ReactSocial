@@ -1,9 +1,25 @@
+@import '../config/breakpoints';
+
 #login {
     display: grid;
     gap: 10px;
-    grid-template: var(--loginGrid);
     padding: 5em 0;
 
+    @include desktop() {
+        grid-template: 
+            "image form" 1fr
+            "image info" 100px
+            / 1fr 300px
+        ;
+    }
+    @include touch() {
+        grid-template: 
+            "image" 1fr
+            "form" 1fr
+            "info" 1fr
+            / 1fr
+        ;
+    }
     #loginForm {
         display: flex;
         flex-direction: column;
