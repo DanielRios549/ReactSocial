@@ -3,7 +3,7 @@ import Router from 'next/router'
 import nookies from 'nookies'
 import User from '../types/user'
 import Relation from '../types/relation'
-import { useLocalStorage } from '../hooks/useLocalStorage'
+import { useLocalStorage } from '../hooks/useStorage'
 
 type Auth = {
     // States

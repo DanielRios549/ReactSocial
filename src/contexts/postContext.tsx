@@ -1,5 +1,5 @@
 import React, { useEffect, createContext } from 'react'
-import { useLocalStorage } from '../hooks/useLocalStorage'
+import { useSessionStorage } from '../hooks/useStorage'
 import PostInfo from '../types/post'
 
 type Post = {
@@ -11,7 +11,7 @@ type Post = {
 export const PostContext = createContext({} as Post)
 
 export const PostProvider: React.FC = (props: any) => {
-    const [posts, setPosts] = useLocalStorage<PostInfo[]>('posts', [])
+    const [posts, setPosts] = useSessionStorage<PostInfo[]>('posts', [])
 
     useEffect(() => getPosts(), [])
 
