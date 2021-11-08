@@ -7,7 +7,7 @@ import styles from '../styles/pages.module.scss'
 const LoginPage: NextPage = () => {
     return (
         <div id={styles.container}>
-            <Header menu={false} page="login"/>
+            <Header noMenu noSearch page="login"/>
             <LoginForm />
             <Footer />
         </div>

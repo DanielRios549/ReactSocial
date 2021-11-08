@@ -6,7 +6,8 @@ import styles from '../../styles/parts/header.module.scss'
 
 type Props = {
     page: string
-    menu: boolean
+    noMenu?: boolean
+    noSearch?: boolean
 }
 
 
@@ -27,12 +28,12 @@ const Header: React.FC<Props> = (props) => {
                 <link rel="manifest" href="manifest.json" />
             </Head>
             <header id={styles.header}>
-                <Link passHref href="/">
-                    <a>
+                <Link href="/">
+                    <a id={styles.logo}>
                         <img src="/images/reakut.png" alt="logo" width={150} height={20}/>
                     </a>
                 </Link>
-                {props.menu === true &&
+                {props.noMenu !== true &&
                     <>
                         <button onClick={handleMenu} id={styles.menuToggle}/>
                         <nav id={styles.menu} className={menu === true ? styles.active : styles.hide}>
@@ -40,11 +41,14 @@ const Header: React.FC<Props> = (props) => {
                                 <li><NavLink href="/" activeClassName={styles.active}>Home</NavLink></li>
                                 <li><NavLink href="/friends" activeClassName={styles.active}>Friends</NavLink></li>
                                 <li><NavLink href="/communities" activeClassName={styles.active}>Communities</NavLink></li>
+                                <li><Link href="/logout"><a>Logout</a></Link></li>
                             </ul>
                         </nav>
                     </>
                 }
-                <input type="text" id={styles.search} placeholder="Search"/>
+                {props.noSearch !== true &&
+                    <input type="text" id={styles.search} placeholder="Search"/>
+                }
             </header>
         </>
     )

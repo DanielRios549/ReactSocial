@@ -52,4 +52,16 @@
             height: 40px;
         }
     }
+    #logout {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        #text {
+            border-radius: var(--radius);
+            background-color: var(--secondary);
+            padding: 10px;
+            font-size: 3em;
+        }
+    }
 }

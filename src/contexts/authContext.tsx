@@ -21,6 +21,7 @@ type Auth = {
     // API Functions
 
     signIn: (data: User) => Promise<User | any>
+    signOut: () => void
 }
 
 export const AuthContext = createContext({} as Auth)
@@ -59,9 +60,14 @@ export const AuthProvider: React.FC = (props: any) => {
             }
         })
     }
+    const signOut = () => {
+        nookies.destroy(null, 'token')
+        localStorage.clear()
 
+        Router.push('/login')
+    }
     return (
-        <AuthContext.Provider value={{user, following, followers, setUser, setFollowing, setFollowers, signIn}}>
+        <AuthContext.Provider value={{user, following, followers, setUser, setFollowing, setFollowers, signIn, signOut}}>
             {props.children}
         </AuthContext.Provider>
     )

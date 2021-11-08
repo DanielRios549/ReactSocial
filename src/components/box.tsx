@@ -5,6 +5,7 @@ type Props = {
     single?: boolean
     area: string
     noBackground?: boolean
+    id?: string
     hide?: boolean
     tag?: 'div' | 'aside' | 'article' | 'section'
 }
@@ -23,7 +24,7 @@ const Box: React.FC<Props> = (props) => {
         Tag = props.tag
     }
     return (
-        <Tag style={{gridArea: props.area}} className={`${type} ${props.hide ? styles.hide : ''}`}>{
+        <Tag style={{gridArea: props.area}} id={props.id} className={`${type} ${props.hide ? styles.hide : ''}`}>{
             props.children
         }
         </Tag>

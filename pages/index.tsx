@@ -11,7 +11,7 @@ import styles from '../styles/pages.module.scss'
 const HomePage: NextPage<User> = (props) => {
     return (
         <div id={styles.container}>
-            <Header menu={true} page="home"/>
+            <Header page="home"/>
             <Main username={props.username} name={props.name} image={props.image}/>
             <Footer />
         </div>
