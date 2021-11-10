@@ -23,9 +23,7 @@ const Relations: React.FC<Props> = (props) => {
                     <li key={index} className={styles.item}>
                         <figure className={styles.figure}>
                             <figcaption className={styles.caption}>{item.name}</figcaption>
-                            <div className="image">
-                                <Image width={100} height={100} src={item.image} alt={`${item.name} profile image`} />
-                            </div>
+                            <Image loading="lazy" width={100} height={100} src={item.image} alt={`${item.name} profile image`} />
                         </figure>
                     </li>
                 ))

@@ -1,3 +1,5 @@
+@import '../config/prefixes';
+
 .relation {
     .header {
         font-size: 15pt;
@@ -11,13 +13,23 @@
 
         .item {
             width: 100px;
+            height: 100px;
             display: flex;
 
+            &:hover {
+                cursor: pointer;
+
+                .figure img {
+                    filter: blur(3px);
+                }
+            }
             .figure {
                 position: relative;
 
-                .caption {
+                > * {
                     border-radius: var(--radius);
+                }
+                .caption {
                     background: rgba(0, 0, 0, 0.5);
                     position: absolute;
                     height: 100%;
@@ -32,6 +44,8 @@
                 img {
                     border-radius: var(--radius);
                     width: 100%;
+
+                    @include transition(all, 200ms, ease);
                 }
             }
         }
