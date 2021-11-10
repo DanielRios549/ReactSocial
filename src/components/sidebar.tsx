@@ -27,15 +27,15 @@ const UserSidebar: React.FC<Props> = (props) => {
             <section className={styles.section}>
                 <Image priority src={image} alt="user" width={200} height={220}/>
                 <h3 className={styles.header}>
-                    <Link passHref href={link}>
-                        <a title="Go to user profile on GitHub" target="_blank">@{username}</a>
+                    <Link href={link}>
+                        <a title="Go to user profile on GitHub" rel="noreferrer" target="_blank">@{username}</a>
                     </Link>
                 </h3>
             </section>
             <section className={styles.section}>{
                 links.map((item, index) => (
-                    <Link key={index} passHref href={item[0]}>
-                        <a title={item[1]} target="_blank">{item[2]}</a>
+                    <Link key={index} href={item[0]}>
+                        <a title={item[1]} rel="noreferrer" target="_blank">{item[2]}</a>
                     </Link>
                 ))
             }</section>

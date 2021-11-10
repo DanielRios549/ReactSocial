@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
             </span>
             <span>
             Created by
-            <a href={githubLink} target="_blank">
+            <a href={githubLink} rel="noreferrer" target="_blank">
                 Daniel Rios
             </a>
             </span>

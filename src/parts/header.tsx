@@ -24,18 +24,19 @@ const Header: React.FC<Props> = (props) => {
                 <title>Reakut - {props.page}</title>
                 <meta name="description" content="Social Network build with NextJS (Study purposes)" />
                 <meta name="theme-color" content="#242526" />
+                <link rel="apple-touch-icon" href="/images/icon-192x192.png"></link>
                 <link rel="icon" href="/images/favicon.png" />
                 <link rel="manifest" href="manifest.json" />
             </Head>
             <header id={styles.header}>
                 <Link href="/">
                     <a id={styles.logo}>
-                        <img src="/images/reakut.png" alt="logo" width={150} height={20}/>
+                        <img width={150} height={40} src="/images/reakut.png" alt="logo"/>
                     </a>
                 </Link>
                 {props.noMenu !== true &&
                     <>
-                        <button onClick={handleMenu} id={styles.menuToggle}/>
+                        <button onClick={handleMenu} id={styles.menuToggle} aria-label="menuToggle"/>
                         <nav id={styles.menu} className={menu === true ? styles.active : styles.hide}>
                             <ul>
                                 <li><NavLink href="/" activeClassName={styles.active}>Home</NavLink></li>

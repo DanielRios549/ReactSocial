@@ -28,8 +28,11 @@
         @include mobileSmall() {
             width: 40px;
             height: 40px;
+        }
+        img {
+            width: 150px;
 
-            img {
+            @include mobileSmall() {
                 position: absolute;
                 clip-path: inset(0 70% 0 0);
             }

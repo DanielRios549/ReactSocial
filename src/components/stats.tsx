@@ -28,9 +28,9 @@ const Stats: React.FC<Props> = (props) => {
     const commonConfig = `${config.user}&${config.theme}&${config.border}&${config.background}`
 
     return (
-        <section id={styles.stats} role="stats_frame">
-            <img role="stats" alt="stats" src={`${config.url}?custom_title=${config.title}&${commonConfig}&${config.icons}&${config.commits}&hide_rank=true`} />
-            <img role="stats" alt="langs" src={`${config.url}/top-langs/?${commonConfig}&${config.langs}&layout=compact`} />
+        <section id={styles.stats}>
+            <img width={222} height={160} alt={`${username}'s stats`} src={`${config.url}?custom_title=${config.title}&${commonConfig}&${config.icons}&${config.commits}&hide_rank=true`} />
+            <img width={295} height={160} alt={`${username}'s languages`} src={`${config.url}/top-langs/?${commonConfig}&${config.langs}&layout=compact`} />
         </section>
     )
 }

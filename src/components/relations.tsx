@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 import Relation from '../types/relation'
 import styles from '../../styles/components/relations.module.scss'
 
@@ -22,7 +23,9 @@ const Relations: React.FC<Props> = (props) => {
                     <li key={index} className={styles.item}>
                         <figure className={styles.figure}>
                             <figcaption className={styles.caption}>{item.name}</figcaption>
-                            <img src={item.image} alt={`${item.name} image`} />
+                            <div className="image">
+                                <Image width={100} height={100} src={item.image} alt={`${item.name} profile image`} />
+                            </div>
                         </figure>
                     </li>
                 ))
