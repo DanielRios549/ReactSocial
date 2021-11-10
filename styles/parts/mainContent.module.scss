@@ -1,6 +1,7 @@
 @import '../config/breakpoints';
 
 #main {
+    grid-area: main;
     display: grid;
     gap: 10px;
     padding: 20px 0;
@@ -10,7 +11,7 @@
             "panel wellcome aside" 220px
             "panel form aside" 200px
             "panel posts aside" 1fr
-            / minmax(150px, 250px) 580px minmax(250px, 350px)
+            / minmax(150px, 250px) minmax(520px, 580px) minmax(250px, 350px)
         ;
     }
     @include tablet() {
@@ -23,17 +24,7 @@
             / 1fr
         ;
     }
-    @include mobileLarge() {
-        grid-template: 
-            "panel"
-            "wellcome"
-            "form"
-            "posts"
-            "aside"
-            / 1fr
-        ;
-    }
-    @include mobileSmall() {
+    @include mobile() {
         grid-template: 
             "panel"
             "wellcome"

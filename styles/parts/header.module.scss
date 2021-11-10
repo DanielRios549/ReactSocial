@@ -2,6 +2,8 @@
 @import '../config/breakpoints';
 
 #header {
+    position: sticky;
+    top: 0;
     background-color: var(--secondary);
     grid-area: header;
     display: flex;
@@ -50,7 +52,7 @@
     }
     .hide {
         @include touch() {
-            top: -100%;
+            top: -120vh;
         }
     }
     .active {
@@ -135,7 +137,9 @@
             order: 2;
             flex-grow: 1;
         }
-
+        @include mobileSmall() {
+            width: 100px;
+        }
         &:focus {
             @include desktop() {
                 width: 300px;

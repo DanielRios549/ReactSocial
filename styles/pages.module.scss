@@ -11,10 +11,10 @@
 
     @include desktop() {
         grid-template: 
-        "header header header" 80px
+            "header header header" 80px
             ". main ." 1fr
             "footer footer footer" 100px
-            / 1fr minmax(800px, 1200px) 1fr
+            / 1fr minmax(700px, 1200px) 1fr
         ;
     }
     @include tablet() {
