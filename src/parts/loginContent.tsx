@@ -5,7 +5,7 @@ import Box from '../components/box'
 import styles from '../../styles/parts/loginContent.module.scss'
 
 
-const LoginForm: React.FC = () => {
+const LoginContent: React.FC = () => {
     const {signIn} = useAuth()
     const {register, handleSubmit} = useForm()
 
@@ -38,4 +38,4 @@ const LoginForm: React.FC = () => {
     );
 }
 
-export default LoginForm
+export default LoginContent
