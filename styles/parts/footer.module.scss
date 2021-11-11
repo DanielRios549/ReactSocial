@@ -1,4 +1,4 @@
-@import '../config//breakpoints';
+@import '../config/breakpoints';
 
 .footer {
     border-top: 2px solid var(--primary);
@@ -12,12 +12,13 @@
     gap: 10px;
     z-index: 101;
 
-    @include mobileLarge() {
+    @include mobile() {
         padding: 0 20px;
     }
     @include mobileSmall() {
+        flex-direction: column;
         justify-content: center;
-        padding: 0 60px;
+        gap: 30px;
     }
     span {
         display: flex;

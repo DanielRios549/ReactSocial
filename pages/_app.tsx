@@ -1,15 +1,18 @@
 import type { AppProps } from 'next/app'
+import { ThemeProvider } from '../src/contexts/themeContext'
 import { AuthProvider } from '../src/contexts/authContext'
 import { PostProvider } from '../src/contexts/postContext'
 import '../styles/globals.scss'
 
-function MyApp({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
     return (
-        <AuthProvider>
-            <PostProvider>
-                <Component {...pageProps} />
-            </PostProvider>
-        </AuthProvider>
+        <ThemeProvider>
+            <AuthProvider>
+                <PostProvider>
+                    <Component {...pageProps} />
+                </PostProvider>
+            </AuthProvider>
+        </ThemeProvider>
     )
 }
-export default MyApp
+export default App
