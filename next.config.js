@@ -8,7 +8,7 @@ module.exports = withPWA({
     dest: 'public',
     register: true,
     skipWaiting: true,
-    buildExcludes: [/middleware-manifest.json$/],
+    buildExcludes: [/middleware-manifest.json$/, /_middleware.js$/],
     disable: process.env.NODE_ENV === 'development'
   },
   images: {

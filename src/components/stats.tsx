@@ -1,4 +1,5 @@
 import React from 'react'
+import dynamic from 'next/dynamic'
 import styles from '../../styles/components/stats.module.scss'
 import { useAuth } from '../hooks/useContext'
 
@@ -35,4 +36,6 @@ const Stats: React.FC<Props> = (props) => {
     )
 }
 
-export default Stats
+export default dynamic(() => Promise.resolve(Stats), {
+    ssr: false
+});

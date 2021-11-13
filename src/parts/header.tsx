@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import NavLink from '../components/navLink'
+import { useTheme } from '../hooks/useContext'
 import styles from '../../styles/parts/header.module.scss'
 
 type Props = {
@@ -12,7 +13,8 @@ type Props = {
 
 
 const Header: React.FC<Props> = (props) => {
-    const [menu, setMenu] = React.useState(false)
+    const [menu, setMenu] = useState(false)
+    const {theme, handleTheme, setButton} = useTheme()
 
     const handleMenu = () => {
         menu === false ? setMenu(true) : setMenu(false)
@@ -24,7 +26,7 @@ const Header: React.FC<Props> = (props) => {
                 <title>Reakut - {props.page}</title>
                 <meta name="description" content="Social Network build with NextJS (Study purposes)" />
                 <meta name="theme-color" content="#242526" />
-                <link rel="apple-touch-icon" href="/images/icon-192x192.png"></link>
+                <link rel="apple-touch-icon" href="/images/icon-192x192.png" />
                 <link rel="icon" href="/images/favicon.png" />
                 <link rel="manifest" href="manifest.json" />
             </Head>
@@ -44,6 +46,7 @@ const Header: React.FC<Props> = (props) => {
                                 <li><NavLink href="/communities" activeClassName={styles.active}>Communities</NavLink></li>
                                 <li><Link href="/logout"><a>Logout</a></Link></li>
                             </ul>
+                            <input type="checkbox" checked={setButton()} onChange={handleTheme} id={styles.themeToggle} className={styles[theme]}/>
                         </nav>
                     </>
                 }

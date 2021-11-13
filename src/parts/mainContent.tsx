@@ -2,17 +2,16 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import Box from '../components/box'
 import UserSidebar from '../components/sidebar'
-import User from '../types/user'
-import { PostForm } from '../types/post'
 import Stats from '../components/stats'
 import Post from '../components/post'
 import Relations from '../components/relations'
 import Relation from '../types/relation'
+import { PostForm } from '../types/post'
 import { useAuth, usePost } from '../hooks/useContext'
 import styles from '../../styles/parts/mainContent.module.scss'
 
 
-const Main: React.FC<User> = (props) => {
+const Main: React.FC = () => {
     const {posts, addPost} = usePost()
     const {register, handleSubmit} = useForm()
 
@@ -32,11 +31,11 @@ const Main: React.FC<User> = (props) => {
     return (
         <main id={styles.main}>
             <Box single hide area="panel" tag="aside">
-                <UserSidebar user={props.username} image={props.image}/>
+                <UserSidebar/>
             </Box>
             <Box single area="wellcome" tag="section">
-                <h1>Wellcome {props.name}!</h1>
-                <Stats user={props.username}/>
+                <h1>Wellcome {user.name}!</h1>
+                <Stats/>
             </Box>
             <Box single area="form" tag="section">
                 <h2>Let's Start</h2>

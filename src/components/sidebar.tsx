@@ -1,4 +1,5 @@
 import React from 'react'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useAuth } from '../hooks/useContext'
@@ -43,4 +44,6 @@ const UserSidebar: React.FC<Props> = (props) => {
     )
 }
 
-export default UserSidebar
+export default dynamic(() => Promise.resolve(UserSidebar), {
+    ssr: false
+});

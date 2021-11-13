@@ -13,9 +13,13 @@ export const ThemeContext = createContext({} as Theme)
 export const ThemeProvider: React.FC = (props: any) => {
     const [theme, setTheme] = useLocalStorage<string>('theme', 'dark')
 
-    useLayoutEffect(() => {
-        document.body.setAttribute('data-theme', theme)
-    }, [theme])
+    // Hack necessary to avoid useLayoutEffect to run on server side
+
+    if (typeof window !== 'undefined') {
+        useLayoutEffect(() => {
+            document.body.setAttribute('data-theme', theme)
+        }, [theme])
+    }
 
     const handleTheme = () => {
         setTheme(theme === 'light' ? 'dark' : 'light')
