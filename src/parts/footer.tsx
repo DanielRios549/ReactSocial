@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
         <footer className={styles.footer}>
             <span>
             Powered by
-            <a href={vercelLink} target="_blank" rel="noopener noreferrer" className={styles.vercel}>
+            <a href={vercelLink} target="_blank" rel="noreferrer" className={styles.vercel}>
                 <Image loading="lazy" src="/images/vercel.svg" alt="Vercel Logo" width={72} height={16} />
             </a>
             </span>

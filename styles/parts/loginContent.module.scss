@@ -21,15 +21,18 @@
             / 1fr
         ;
     }
-    #loginForm {
+    & > * {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 100%;
-        padding: 30px;
+        gap: 30px;
+    }
+    #loginForm {
         text-align: center;
-        gap: 5px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
     
         #loginInput,
         button {

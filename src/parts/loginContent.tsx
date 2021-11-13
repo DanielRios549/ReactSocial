@@ -1,4 +1,6 @@
 import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
 import { useForm } from 'react-hook-form'
 import { useAuth } from '../hooks/useContext'
 import Box from '../components/box'
@@ -14,10 +16,13 @@ const LoginContent: React.FC = () => {
     }
     return (
         <main id={styles.login}>
-            <Box single area="image">
-                <p>Test</p>
+            <Box single area="image" tag="section">
+                <Image src="/images/reakut.png" width={179} height={50}/>
+                <h1>Show data from GitHub users</h1>
+                <p>The data is fetched using GitHub API and saved to Storage</p>
+                <p><strong>This is a study project</strong></p>
             </Box>
-            <Box single area="form">
+            <Box single area="form" tag="section">
                 <form onSubmit={handleSubmit(handleLogin)} id={styles.loginForm}>
                     <h3>Enter with your Github User</h3>
                     <input 
@@ -31,8 +36,14 @@ const LoginContent: React.FC = () => {
                     <button type="submit">Login</button>
                 </form>
             </Box>
-            <Box single area="info">
-                <p>Info</p>
+            <Box single area="info" tag="section">
+                <p>
+                    <Link href="https://github.com/DanielRios549/ReactSocial">
+                        <a target="_blank" rel="noreferrer">
+                            Source Code on GitHub
+                        </a>
+                    </Link>
+                </p>
             </Box>
         </main>
     );
