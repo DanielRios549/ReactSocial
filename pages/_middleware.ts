@@ -5,6 +5,7 @@ export default async function middleware(request: NextRequest, event: NextFetchE
     const {token} = request.cookies
 
     const page = request.page.name || '/none'
+
     // Pages to intercept
 
     const authPages = [
@@ -20,17 +21,18 @@ export default async function middleware(request: NextRequest, event: NextFetchE
                 }
             })
             .then((data) => data.json())
+
             // Token is not valid
 
             if (isAuthenticated !== true) {
-                return NextResponse.redirect('/login', 308)
+                return NextResponse.redirect('/login')
             }
         }
 
         // Token does not exists
 
         else {
-            return NextResponse.redirect('/login', 308)
+            return NextResponse.redirect('/login')
         }
     }
 }

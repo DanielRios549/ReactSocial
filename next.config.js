@@ -8,6 +8,7 @@ module.exports = withPWA({
     dest: 'public',
     register: true,
     skipWaiting: true,
+    dynamicStartUrlRedirect: '/login',
     buildExcludes: [/middleware-manifest.json$/, /_middleware.js$/],
     disable: process.env.NODE_ENV === 'development'
   },
