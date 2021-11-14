@@ -79,13 +79,18 @@
             left: 0;
             z-index: 100;
             width: 100%;
-            height: 100vh;flex-direction: column;
+            height: 100vh;
+            flex-direction: column;
         }
         #themeToggle {
             appearance: none;
             height: 40px;
             width: 40px;
             cursor: pointer;
+
+            &:hover {
+                background-color: var(--primary);
+            }
 
             @include desktop() {
                 margin-left: auto;
@@ -121,8 +126,6 @@
                 }
                 a {
                     display: flex;
-
-                    @include transition(background-color, 400ms, ease);
                     
                     @include desktop() {
                         border-radius: 7px;

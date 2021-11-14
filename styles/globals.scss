@@ -1,21 +1,12 @@
+@import "./config/prefixes";
+@import "./config/themes";
+
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-}
-body[data-theme="light"] {
-    --primary: #d6d6d6;
-    --secondary: #ffffff;
-    --text: #313131;
-    --text2: #d6d6d6;
-    --radius: 12px;
-}
-body[data-theme="dark"] {
-    --primary: #181818;
-    --secondary: #242526;
-    --text: #d6d6d6;
-    --text2: #d6d6d6;
-    --radius: 12px;
+
+    @include transition(background-color, 400ms, ease);
 }
 html,
 body {

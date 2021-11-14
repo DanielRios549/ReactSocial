@@ -14,7 +14,7 @@ type Props = {
 
 const Header: React.FC<Props> = (props) => {
     const [menu, setMenu] = useState(false)
-    const {theme, handleTheme, setButton} = useTheme()
+    const {theme, handleTheme} = useTheme()
 
     const handleMenu = () => {
         menu === false ? setMenu(true) : setMenu(false)
@@ -46,7 +46,7 @@ const Header: React.FC<Props> = (props) => {
                                 <li><NavLink href="/communities" activeClassName={styles.active}>Communities</NavLink></li>
                                 <li><Link href="/logout"><a>Logout</a></Link></li>
                             </ul>
-                            <input type="checkbox" checked={setButton()} onChange={handleTheme} id={styles.themeToggle} className={styles[theme]}/>
+                            <button onClick={handleTheme} id={styles.themeToggle} aria-label="themeToggle"/>
                         </nav>
                     </>
                 }

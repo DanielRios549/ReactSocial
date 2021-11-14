@@ -3,15 +3,14 @@ import { useLocalStorage } from '../hooks/useStorage'
 
 type Theme = {
     theme: string
-    setTheme: React.Dispatch<React.SetStateAction<string>>
     handleTheme: () => void
-    setButton: () => boolean
 }
 
 export const ThemeContext = createContext({} as Theme)
 
 export const ThemeProvider: React.FC = (props: any) => {
-    const [theme, setTheme] = useLocalStorage<string>('theme', 'dark')
+    const themes = ['dark', 'light']
+    const [theme, setTheme] = useLocalStorage<string>('theme', themes[0])
 
     // Hack necessary to avoid useLayoutEffect to run on server side
 
@@ -22,13 +21,21 @@ export const ThemeProvider: React.FC = (props: any) => {
     }
 
     const handleTheme = () => {
-        setTheme(theme === 'light' ? 'dark' : 'light')
+        const current = themes.indexOf(theme)
+        let nextTheme = ''
+        
+        if (current + 1 === themes.length) {
+            nextTheme = themes[0]
+        }
+        else {
+            nextTheme = themes[current + 1]
+        }
+
+        setTheme(nextTheme)
     }
-    const setButton = () => {
-        return theme === 'dark' ? true : false
-    }
+
     return (
-        <ThemeContext.Provider value={{theme, setTheme, handleTheme, setButton}}>
+        <ThemeContext.Provider value={{theme, handleTheme}}>
             {props.children}
         </ThemeContext.Provider>
     )

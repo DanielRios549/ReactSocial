@@ -1,0 +1,22 @@
+body[data-theme="light"] {
+    --primary: #d6d6d6;
+    --secondary: #ffffff;
+    --text: #313131;
+    --text2: #d6d6d6;
+    --radius: 12px;
+
+    button[aria-label="themeToggle"] {
+        background: url('/images/themes/light.png') no-repeat 50% 50%;
+    }
+}
+body[data-theme="dark"] {
+    --primary: #181818;
+    --secondary: #242526;
+    --text: #d6d6d6;
+    --text2: #d6d6d6;
+    --radius: 12px;
+
+    button[aria-label="themeToggle"] {
+        background: url('/images/themes/dark.png') no-repeat 50% 50%;
+    }
+}
