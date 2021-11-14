@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import Image from 'next/image'
 import Head from 'next/head'
 import Link from 'next/link'
 import NavLink from '../components/navLink'
@@ -46,7 +47,9 @@ const Header: React.FC<Props> = (props) => {
                                 <li><NavLink href="/communities" activeClassName={styles.active}>Communities</NavLink></li>
                                 <li><Link href="/logout"><a>Logout</a></Link></li>
                             </ul>
-                            <button onClick={handleTheme} id={styles.themeToggle} aria-label="themeToggle"/>
+                            <button onClick={handleTheme} id={styles.themeToggle} aria-label="themeToggle">
+                                <Image src={`/images/themes/${theme}.png`} width={24} height={24}/>
+                            </button>
                         </nav>
                     </>
                 }

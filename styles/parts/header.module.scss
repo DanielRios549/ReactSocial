@@ -83,20 +83,22 @@
             flex-direction: column;
         }
         #themeToggle {
-            appearance: none;
+            background-color: var(--secondary);
             height: 40px;
             width: 40px;
             cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
             &:hover {
                 background-color: var(--primary);
             }
-
-            @include desktop() {
-                margin-left: auto;
-            }
             @include touch() {
                 margin-left: 85px;
+            }
+            > * {
+                position: absolute !important;
             }
         }
         ul {

@@ -4,10 +4,6 @@ body[data-theme="light"] {
     --text: #313131;
     --text2: #d6d6d6;
     --radius: 12px;
-
-    button[aria-label="themeToggle"] {
-        background: url('/images/themes/light.png') no-repeat 50% 50%;
-    }
 }
 body[data-theme="dark"] {
     --primary: #181818;
@@ -15,8 +11,4 @@ body[data-theme="dark"] {
     --text: #d6d6d6;
     --text2: #d6d6d6;
     --radius: 12px;
-
-    button[aria-label="themeToggle"] {
-        background: url('/images/themes/dark.png') no-repeat 50% 50%;
-    }
 }
