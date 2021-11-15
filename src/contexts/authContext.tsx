@@ -62,7 +62,9 @@ export const AuthProvider: React.FC = (props: any) => {
     }
     const signOut = () => {
         nookies.destroy(null, 'token')
-        localStorage.clear()
+        localStorage.removeItem('following')
+        localStorage.removeItem('followers')
+        localStorage.removeItem('user')
 
         Router.push('/login')
     }

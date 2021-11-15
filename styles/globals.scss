@@ -8,6 +8,10 @@
 
     @include transition(background-color, 400ms, ease);
 }
+::selection {
+    background-color: var(--highlight);
+    color: var(--highlight2);
+}
 html,
 body {
     color: var(--text);
