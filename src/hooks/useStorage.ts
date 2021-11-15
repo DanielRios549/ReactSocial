@@ -9,7 +9,6 @@ export function useSessionStorage<S = undefined>(key: string, value: string | []
 }
 
 function useStorage<S>(key: string, value: string | [] | {}, persist: boolean): [S, Dispatch<SetStateAction<S>>] {
-
     const [state, setState] = useState<S>(() => {
         try {
             const stored = persist === true ? localStorage.getItem(key) : sessionStorage.getItem(key)

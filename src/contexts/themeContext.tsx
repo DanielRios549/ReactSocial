@@ -1,6 +1,7 @@
 import React, { createContext, useLayoutEffect } from 'react'
 import { useLocalStorage } from '../hooks/useStorage'
 import Dark from '../../public/images/themes/dark.svg'
+import Dracula from '../../public/images/themes/dracula.svg'
 import Light from '../../public/images/themes/light.svg'
 
 type Theme = {
@@ -13,8 +14,8 @@ export const ThemeContext = createContext({} as Theme)
 
 export const ThemeProvider: React.FC = (props: any) => {
     const themes = {
-        names: ['dark', 'light'],
-        icons: [<Dark/>, <Light/>]
+        names: ['light', 'dark', 'dracula'],
+        icons: [<Light/>, <Dark/>, <Dracula/>]
     }
     const [theme, setTheme] = useLocalStorage<string>('theme', themes.names[0])
 

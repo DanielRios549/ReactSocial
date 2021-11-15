@@ -13,7 +13,7 @@ import styles from '../../styles/parts/mainContent.module.scss'
 
 const Main: React.FC = () => {
     const {posts, addPost} = usePost()
-    const {register, handleSubmit} = useForm()
+    const {register, handleSubmit} = useForm<PostForm>()
 
     const [communities, setCommunities] = useState<Relation[]>([])
     const {user, following, followers} = useAuth()

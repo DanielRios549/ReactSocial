@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Image from 'next/image'
+import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import Link from 'next/link'
 import NavLink from '../components/navLink'
@@ -66,4 +66,6 @@ const Header: React.FC<Props> = (props) => {
     )
 }
 
-export default Header
+export default dynamic(() => Promise.resolve(Header), {
+    ssr: false
+});

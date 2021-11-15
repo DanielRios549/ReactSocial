@@ -124,7 +124,8 @@
                     height: 50px;
                 }
                 .active {
-                    background-color: var(--primary);
+                    background-color: var(--highlight);
+                    color: var(--highlight2);
                 }
                 a {
                     display: flex;
@@ -139,7 +140,7 @@
                         text-indent: 85px;
                         align-items: center;
                     }
-                    &:hover {
+                    &:hover:not(.active) {
                         background-color: var(--primary);
                     }
                 }

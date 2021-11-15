@@ -31,6 +31,10 @@
     svg {
         width: 400px;
         height: auto;
+
+        @include mobileSmall() {
+            width: 150px;
+        }
     }
     #loginForm {
         text-align: center;

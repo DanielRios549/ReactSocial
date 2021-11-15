@@ -3,6 +3,9 @@ body[data-theme="light"] {
     --secondary: #ffffff;
     --text: #313131;
     --text2: #d6d6d6;
+    --text3: #313131;
+    --highlight: #d6d6d6;
+    --highlight2: #313131;
     --radius: 12px;
 }
 body[data-theme="dark"] {
@@ -10,5 +13,18 @@ body[data-theme="dark"] {
     --secondary: #242526;
     --text: #d6d6d6;
     --text2: #d6d6d6;
+    --text3: #d6d6d6;
+    --highlight: #181818;
+    --highlight2: #d6d6d6;
+    --radius: 12px;
+}
+body[data-theme="dracula"] {
+    --primary: #21222C;
+    --secondary: #282A36;
+    --text: #d6d6d6;
+    --text2: #d6d6d6;
+    --text3: #BD93F9;
+    --highlight: #BD93F9;
+    --highlight2: #21222C;
     --radius: 12px;
 }
