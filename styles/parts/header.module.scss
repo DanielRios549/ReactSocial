@@ -94,11 +94,19 @@
             &:hover {
                 background-color: var(--primary);
             }
-            @include touch() {
-                margin-left: 85px;
+            @include desktop() {
+                span {
+                    display: none;
+                }
+                svg {
+                    position: absolute !important;
+                }
             }
-            > * {
-                position: absolute !important;
+            @include touch() {
+                display: flex;
+                justify-content: flex-start;
+                width: 100%;
+                gap: 30px;
             }
         }
         ul {

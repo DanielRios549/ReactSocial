@@ -54,6 +54,7 @@ const Header: React.FC<Props> = (props) => {
                             </ul>
                             <button onClick={handleTheme} id={styles.themeToggle} aria-label="themeToggle">
                                 <ThemeIcon />
+                                <span>Current Theme: {theme}</span>
                             </button>
                         </nav>
                     </>
