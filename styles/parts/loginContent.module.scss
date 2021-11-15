@@ -28,6 +28,10 @@
         align-items: center;
         gap: 30px;
     }
+    svg {
+        width: 400px;
+        height: auto;
+    }
     #loginForm {
         text-align: center;
         display: flex;

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="32"
+   height="32"
+   viewBox="0 0 8.4666659 8.4666659"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1 (1:1.1+202105261517+ce6663b3b7)"
+   sodipodi:docname="menu.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     width="32px"
+     units="px"
+     inkscape:zoom="10.091582"
+     inkscape:cx="16.597992"
+     inkscape:cy="20.462599"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g831">
+      <path
+         id="rect846"
+         style="stroke-width:0.264583"
+         d="m 1.4967754,1.1897877 h 5.4731159 c 0.409935,0 0.739955,0.33002 0.739955,0.7399551 0,0.409935 -0.33002,0.739955 -0.739955,0.739955 H 1.4967754 c -0.409935,0 -0.73995496,-0.33002 -0.73995496,-0.739955 0,-0.4099351 0.33001996,-0.7399551 0.73995496,-0.7399551 z" />
+      <path
+         id="rect846-3"
+         style="stroke-width:0.264583"
+         d="m 1.4967754,5.8944535 h 5.4731159 c 0.409935,0 0.739955,0.3300199 0.739955,0.739955 0,0.4099351 -0.33002,0.739955 -0.739955,0.739955 H 1.4967754 c -0.409935,0 -0.73995496,-0.3300199 -0.73995496,-0.739955 0,-0.4099351 0.33001996,-0.739955 0.73995496,-0.739955 z" />
+      <path
+         id="rect846-6"
+         style="stroke-width:0.264583"
+         inkscape:transform-center-x="-1.8103036"
+         inkscape:transform-center-y="3.0656048"
+         d="m 1.4967754,3.5762577 h 5.4731159 c 0.409935,0 0.739955,0.3300199 0.739955,0.739955 0,0.4099351 -0.33002,0.739955 -0.739955,0.739955 H 1.4967754 c -0.409935,0 -0.73995496,-0.3300199 -0.73995496,-0.739955 0,-0.4099351 0.33001996,-0.739955 0.73995496,-0.739955 z" />
+    </g>
+  </g>
+</svg>

@@ -1,16 +1,22 @@
 import React, { createContext, useLayoutEffect } from 'react'
 import { useLocalStorage } from '../hooks/useStorage'
+import Dark from '../../public/images/themes/dark.svg'
+import Light from '../../public/images/themes/light.svg'
 
 type Theme = {
     theme: string
+    ThemeIcon: React.ElementType
     handleTheme: () => void
 }
 
 export const ThemeContext = createContext({} as Theme)
 
 export const ThemeProvider: React.FC = (props: any) => {
-    const themes = ['dark', 'light']
-    const [theme, setTheme] = useLocalStorage<string>('theme', themes[0])
+    const themes = {
+        names: ['dark', 'light'],
+        icons: [<Dark/>, <Light/>]
+    }
+    const [theme, setTheme] = useLocalStorage<string>('theme', themes.names[0])
 
     // Hack necessary to avoid useLayoutEffect to run on server side
 
@@ -21,21 +27,24 @@ export const ThemeProvider: React.FC = (props: any) => {
     }
 
     const handleTheme = () => {
-        const current = themes.indexOf(theme)
+        const current = themes.names.indexOf(theme)
         let nextTheme = ''
         
-        if (current + 1 === themes.length) {
-            nextTheme = themes[0]
+        if (current + 1 === themes.names.length) {
+            nextTheme = themes.names[0]
         }
         else {
-            nextTheme = themes[current + 1]
+            nextTheme = themes.names[current + 1]
         }
 
         setTheme(nextTheme)
     }
+    const ThemeIcon = () => {
+        return themes.icons[themes.names.indexOf(theme)]
+    }
 
     return (
-        <ThemeContext.Provider value={{theme, handleTheme}}>
+        <ThemeContext.Provider value={{theme, ThemeIcon, handleTheme}}>
             {props.children}
         </ThemeContext.Provider>
     )

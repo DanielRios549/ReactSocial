@@ -4,7 +4,10 @@ import Head from 'next/head'
 import Link from 'next/link'
 import NavLink from '../components/navLink'
 import { useTheme } from '../hooks/useContext'
+
 import styles from '../../styles/parts/header.module.scss'
+import LogoIcon from '../../public/images/reakut.svg'
+import MenuIcon from '../../public/images/menu.svg'
 
 type Props = {
     page: string
@@ -15,7 +18,7 @@ type Props = {
 
 const Header: React.FC<Props> = (props) => {
     const [menu, setMenu] = useState(false)
-    const {theme, handleTheme} = useTheme()
+    const {theme, ThemeIcon, handleTheme} = useTheme()
 
     const handleMenu = () => {
         menu === false ? setMenu(true) : setMenu(false)
@@ -34,12 +37,14 @@ const Header: React.FC<Props> = (props) => {
             <header id={styles.header}>
                 <Link href="/">
                     <a id={styles.logo}>
-                        <img width={150} height={40} src="/images/reakut.png" alt="logo"/>
+                        <LogoIcon/>
                     </a>
                 </Link>
                 {props.noMenu !== true &&
                     <>
-                        <button onClick={handleMenu} id={styles.menuToggle} aria-label="menuToggle"/>
+                        <button onClick={handleMenu} id={styles.menuToggle} aria-label="menuToggle">
+                            < MenuIcon/>
+                        </button>
                         <nav id={styles.menu} className={menu === true ? styles.active : styles.hide}>
                             <ul>
                                 <li><NavLink href="/" activeClassName={styles.active}>Home</NavLink></li>
@@ -48,7 +53,7 @@ const Header: React.FC<Props> = (props) => {
                                 <li><Link href="/logout"><a>Logout</a></Link></li>
                             </ul>
                             <button onClick={handleTheme} id={styles.themeToggle} aria-label="themeToggle">
-                                <Image src={`/images/themes/${theme}.png`} width={24} height={24}/>
+                                <ThemeIcon />
                             </button>
                         </nav>
                     </>

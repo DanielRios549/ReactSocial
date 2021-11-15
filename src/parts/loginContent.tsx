@@ -4,7 +4,9 @@ import Image from 'next/image'
 import { useForm } from 'react-hook-form'
 import { useAuth } from '../hooks/useContext'
 import Box from '../components/box'
+
 import styles from '../../styles/parts/loginContent.module.scss'
+import LogoIcon from '../../public/images/reakut.svg'
 
 
 const LoginContent: React.FC = () => {
@@ -17,7 +19,7 @@ const LoginContent: React.FC = () => {
     return (
         <main id={styles.login}>
             <Box single area="image" tag="section">
-                <Image src="/images/reakut.png" width={179} height={50}/>
+                <LogoIcon/>
                 <h1>Show data from GitHub users</h1>
                 <p>The data is fetched using GitHub API and saved to Storage</p>
                 <p><strong>This is a study project</strong></p>

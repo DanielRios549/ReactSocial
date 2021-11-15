@@ -45,4 +45,7 @@ body {
         height: auto;
         display: block;
     }
+    svg path {
+        fill: var(--text);
+    }
 }
