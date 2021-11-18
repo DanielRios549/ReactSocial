@@ -15,7 +15,7 @@ const Stats: React.FC<Props> = (props) => {
     const username = props.user || user.username
 
     const config = {
-        url: 'https://github-readme-stats.vercel.app/api',
+        url: 'https://reakut-stats.vercel.app/api',
         user: `username=${username}`,
         title: `${name}GitHub Stats`,
         theme: 'theme=react',
