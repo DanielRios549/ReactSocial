@@ -1,4 +1,4 @@
-@import '../config/prefixes';
+@use '../config/prefixes' as *;
 
 .relation {
     .header {

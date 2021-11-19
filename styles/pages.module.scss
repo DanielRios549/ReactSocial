@@ -1,6 +1,6 @@
 // Common Pages Styles
 
-@import './config/breakpoints';
+@use './config/breakpoints' as *;
 
 #container {
     background-color: var(--primary);

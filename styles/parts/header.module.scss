@@ -1,5 +1,5 @@
-@import '../config/prefixes';
-@import '../config/breakpoints';
+@use '../config/prefixes' as *;
+@use '../config/breakpoints' as *;
 
 #header {
     border-bottom: 2px solid var(--primary);

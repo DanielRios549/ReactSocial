@@ -1,5 +1,5 @@
-@import "./config/prefixes";
-@import "./config/themes";
+@use "./config/prefixes" as *;
+@use "./config/themes";
 
 * {
     box-sizing: border-box;

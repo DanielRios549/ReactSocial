@@ -1,4 +1,4 @@
-@import '../config/breakpoints';
+@use '../config/breakpoints' as *;
 
 .footer {
     border-top: 2px solid var(--primary);

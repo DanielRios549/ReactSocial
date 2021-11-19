@@ -1,4 +1,4 @@
-@import '../config/breakpoints';
+@use '../config/breakpoints' as *;
 
 #stats {
     display: flex;
