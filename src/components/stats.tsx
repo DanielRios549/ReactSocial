@@ -8,14 +8,13 @@ type Props = {
     name?: string
 }
 
-
 const Stats: React.FC<Props> = (props) => {
     const {user} = useAuth()
     const name = props.name ? `${props.name}'s ` : ''
     const username = props.user || user.username
 
     const config = {
-        url: 'https://reakut-stats.vercel.app/api',
+        url: `${process.env.NEXT_PUBLIC_STATS_URL}/api`,
         user: `username=${username}`,
         title: `${name}GitHub Stats`,
         theme: 'theme=react',
@@ -30,8 +29,8 @@ const Stats: React.FC<Props> = (props) => {
 
     return (
         <section id={styles.stats}>
-            <img width={222} height={160} alt={`${username}'s stats`} src={`${config.url}?custom_title=${config.title}&${commonConfig}&${config.icons}&${config.commits}&hide_rank=true`} />
-            <img width={295} height={160} alt={`${username}'s languages`} src={`${config.url}/top-langs/?${commonConfig}&${config.langs}&layout=compact`} />
+            <img height={160} alt={`${username}'s stats`} src={`${config.url}?custom_title=${config.title}&${commonConfig}&${config.icons}&${config.commits}&hide_rank=true`} />
+            <img height={160} alt={`${username}'s languages`} src={`${config.url}/top-langs/?${commonConfig}&${config.langs}&layout=compact`} />
         </section>
     )
 }
