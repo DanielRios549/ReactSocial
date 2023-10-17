@@ -7,6 +7,7 @@ declare global {
             readonly BACKEND_API_TOKEN: string
             readonly SITE_URL: string
             readonly JWT_SECRET: string
+            readonly NEXT_PUBLIC_STATS_URL: string
         }
     }
 }
